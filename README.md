@@ -1,7 +1,7 @@
 <h1 align="center">NIGIN · Hauswelt</h1>
 
 <p align="center"><b><a href="https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_8.html">▶ Im Browser spielen</a></b> &nbsp;·&nbsp; <b><a href="https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip">⬇ Paket (ZIP) herunterladen</a></b> &nbsp;·&nbsp; Version 1.16.8</p>
-<p align="center"><sub>Eine Datei · läuft offline · ohne Konto · die Welt sendet keine Daten</sub></p>
+<p align="center"><sub>Zwei Dateien · läuft offline · ohne Konto · die Welt sendet keine Daten</sub></p>
 
 | Datei | Inhalt | Spielen | Download |
 |---|---|---|---|
@@ -15,7 +15,7 @@ Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Ga
 ## So startest du
 
 1. **Direkt im Browser:** oben auf *Im Browser spielen* klicken. Fertig.
-2. **Offline:** *HTML herunterladen*, dann die Datei mit Chrome, Edge, Firefox oder Safari öffnen. Es ist keine Installation nötig, nur JavaScript muss aktiv sein.
+2. **Offline:** *Paket (ZIP) herunterladen* und entpacken, dann die Datei mit Chrome, Edge, Firefox oder Safari öffnen. Es ist keine Installation nötig, nur JavaScript muss aktiv sein.
    - Auf iPhone und iPad zeigt die Vorschau der Dateien-App kein JavaScript. Die Datei dort über *Teilen* in einem Browser öffnen.
 
 ## Bedienung
