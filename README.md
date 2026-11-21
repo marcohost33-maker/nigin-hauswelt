@@ -1,7 +1,7 @@
 <h1 align="center">NIGIN · Hauswelt</h1>
 
 <p align="center"><b><a href="https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_8.html">▶ Im Browser spielen</a></b> &nbsp;·&nbsp; <b><a href="https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip">⬇ Paket (ZIP) herunterladen</a></b> &nbsp;·&nbsp; Version 1.16.8</p>
-<p align="center"><sub>Eine Datei · läuft offline · ohne Konto · keine Daten verlassen dein Gerät</sub></p>
+<p align="center"><sub>Eine Datei · läuft offline · ohne Konto · die Welt sendet keine Daten</sub></p>
 
 | Datei | Inhalt | Spielen | Download |
 |---|---|---|---|
@@ -26,13 +26,14 @@ Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Ga
 
 ## Was es ist und was (noch) nicht
 
-- Die Aarewelt ist frei modelliert und nicht vermessungstreu; es sind keine Geodaten eingebaut.
+- Die Aarewelt ist an Aarau angelehnt, aber frei modelliert und nicht vermessungstreu; es sind keine Geodaten eingebaut. Eigene Geodaten lassen sich lokal importieren und bleiben nur im Arbeitsspeicher.
 - Grundlage für ein späteres, grösseres Simulationsspiel; braucht einen Browser mit WebGL.
 
 ## Datenschutz
 
-- Die Welt läuft vollständig lokal; die Datei baut keine Netzwerkverbindungen auf und lädt nichts nach.
-- Der Spielstand wird nur lokal in deinem Browser gespeichert (localStorage) und nie übertragen.
+- Die Welt läuft vollständig lokal; die Datei lädt nichts nach und baut von sich aus keine Netzwerkverbindungen auf.
+- Beim Spielen über *Im Browser spielen* liefert GitHub Pages die Datei aus und verarbeitet dabei, wie jeder Webserver, Zugriffsdaten (etwa die IP-Adresse). Mit der heruntergeladenen Datei entfällt auch das.
+- Speichern und Laden laufen über eine Datei, die du selbst exportierst und wieder importierst. Es gibt keinen Browserspeicher.
 - Keine Konten, keine Cookies, keine Analyse oder Werbung.
 
 ## Prüfsumme
