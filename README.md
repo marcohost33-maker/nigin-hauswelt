@@ -8,7 +8,7 @@
 | **Hauswelt** | das Atelierhaus mit Gartenterrasse | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_8.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/Nigin_Haus_v1_16_8.html) |
 | **Aarewelt** | die Skizzenwelt am Fluss, direkt aus dem Haus erreichbar | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Aare_v1_16_8.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/Nigin_Aare_v1_16_8.html) |
 
-Für offline: das **[Paket NIGIN_Hauswelt_v1_16_8.zip](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip)** laden und entpacken. Beide Dateien müssen im selben Ordner liegen, damit der Weg zwischen den Welten funktioniert.
+Für offline: das **[Paket NIGIN_Hauswelt_v1_16_8.zip](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip)** laden und entpacken. Beide Dateien müssen im selben Ordner liegen, damit der Weg zwischen den Welten funktioniert. Auf Android öffnet Chrome heruntergeladene Dateien so, dass dieser Weg nicht zuverlässig klappt: dort jede Welt einzeln öffnen oder über *Im Browser spielen* spielen.
 
 Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Gartenterrasse, Tageszeit und abnehmbarem Dach. Von dort führt ein Weg in die **Aarewelt**, eine frei modellierte Skizzenwelt am Fluss mit Kraftwerk, Vogelinsel, Gärten, Uferweg und Fussbrücke. Beide Dateien gehören zusammen und verlinken einander. Deshalb liegen sie im Download als Paar vor.
 
