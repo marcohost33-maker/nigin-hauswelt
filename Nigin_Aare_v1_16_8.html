@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+<html lang="de"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#081c24" name="theme-color"/><meta content="default-src 'none'; connect-src 'none'; script-src 'sha256-z1hkA38RitAuK9fIsnE16uxsgE5MSHQIHfmsbWvkwe0='; style-src 'sha256-b4XlRJ9Y9pnqOfgDJd8L7JrPWxqjtTrmB5l3azb0zFs='; img-src data:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'" http-equiv="Content-Security-Policy"/><title>NIGIN · Aarewelt v1.16.8</title><style>
+:root{--bg:#071c22;--glass:rgba(8,26,33,.89);--panel:#10343b;--line:rgba(191,231,224,.23);--text:#ecf7f3;--muted:#bdd1ce;--accent:#c3f4d7;--shadow:0 20px 55px #001d2677}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#678d97;color:var(--text);font-family:ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif;overscroll-behavior:none}button,a{font:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent}button{border:1px solid var(--line);background:#16414a;color:var(--text);font-weight:650;border-radius:13px;min-height:46px;padding:10px 14px;transition:background .16s}button:hover{background:#24606a}button:focus-visible,a:focus-visible{outline:3px solid #eaff96;outline-offset:2px}a{color:var(--accent);text-decoration:none}#view{position:fixed;inset:0;width:100%;height:100%;display:block;touch-action:none}.hud{position:fixed;inset:0;pointer-events:none}.hud>*{pointer-events:auto}[hidden]{display:none!important}.top{position:absolute;top:max(12px,env(safe-area-inset-top));left:16px;right:16px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand,.controls,.topTools,.left,.right,.locationCard,.welcomeBox{background:var(--glass);border:1px solid var(--line);box-shadow:var(--shadow);backdrop-filter:blur(14px)}.brand{display:flex;align-items:center;gap:12px;border-radius:18px;padding:9px 13px;min-width:218px}.logo{width:42px;height:42px;border-radius:13px;background:linear-gradient(140deg,#d1ffe0,#7acdb7);color:#144642;display:grid;place-items:center;font-weight:900;font-size:27px}.logo span{color:#338e80}.brand strong{display:block;font-size:12px;letter-spacing:.12em}.brand small{display:block;font-size:10px;color:#bbd6ce;margin-top:3px;letter-spacing:.07em}.controls,.topTools{border-radius:18px;padding:5px;display:flex;align-items:center;gap:4px}.controls button{background:transparent;border-color:transparent;min-width:65px}.controls button.active{background:#c7f2d7;color:#113932}.topTools button,.topTools a{font-size:13px;background:transparent;border:0;min-width:60px;padding:11px 13px;min-height:46px;border-radius:12px;display:inline-flex;align-items:center;justify-content:center}.topTools button[aria-expanded=true]{background:#27636b}.left,.right{position:absolute;top:86px;max-height:calc(100dvh - 132px);overflow:auto;width:min(344px,calc(100vw - 32px));border-radius:22px;padding:19px;scrollbar-width:thin}.left{left:16px}.right{right:16px}.drawerHead{display:flex;justify-content:space-between;align-items:center;gap:10px}.drawerHead small{font-size:10px;letter-spacing:.15em;color:#a2d5bf;font-weight:750}.drawerHead h2{font-size:21px;margin:5px 0 0}.drawerHead button{font-size:24px;width:46px;padding:0;flex:none}.intro,.note{font-size:12px;line-height:1.55;color:var(--muted)}.menu,.settingGrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px;margin-top:14px}.menu button,.settingGrid button{font-size:13px;text-align:left;line-height:1.2;padding:12px;min-height:58px}.menu button span{display:block;font-size:11px;color:#b4d3cf;margin-top:5px;font-weight:400}.sectionTitle{border-top:1px solid var(--line);margin-top:20px;padding-top:15px;color:#b5dfcb;font-size:12px;text-transform:uppercase;letter-spacing:.13em;font-weight:750}.settingGrid button{min-height:50px}.wide{width:100%;text-align:left;margin-top:9px}.danger{border-color:#ca9d94;color:#ffe5dd}.panel{margin-top:13px;background:#183b41;border:1px solid var(--line);border-radius:14px;padding:12px}.panel h3{margin:0 0 8px;font-size:14px}.panel p{font-size:12px;line-height:1.5;color:var(--muted)}#map{display:block;width:230px;height:230px;max-width:100%;border-radius:10px}.bottom{position:absolute;bottom:max(18px,env(safe-area-inset-bottom));left:16px;right:16px;display:flex;align-items:end;justify-content:space-between;gap:12px}.locationCard{border-radius:16px;padding:13px 17px;max-width:370px}.locationCard small{font-size:10px;letter-spacing:.15em;color:#addfcb}.locationCard strong{display:block;margin:5px 0 3px;font-size:15px}.locationCard p{margin:0 0 5px;font-size:12px;color:var(--muted);line-height:1.4}.locationCard span{font-size:11px;color:#d0e8de}#fps{font-size:12px;background:var(--glass);padding:9px 13px;border-radius:12px}.touchUI{display:none}.welcome{position:absolute;inset:0;background:#051b20ac;backdrop-filter:blur(9px);display:grid;place-items:center;padding:18px}.welcomeBox{border-radius:26px;padding:clamp(22px,5vw,38px);width:min(540px,100%)}.welcomeBox .kicker{font-size:11px;letter-spacing:.2em;color:#b2efd3}.welcomeBox h1{font-size:clamp(32px,5vw,52px);line-height:1.06;letter-spacing:-.055em;margin:14px 0}.welcomeBox p{color:#c4e0d6;font-size:15px;line-height:1.65}.welcomeBox .subtle{font-size:12px}.welcomeBox button{background:#c2f2d8;color:#103a37;border:0;font-weight:800;margin-top:8px;padding:15px 22px}.welcomeBox small{display:block;color:#b4d4c8;font-size:11px;line-height:1.5;margin-top:15px}#error{z-index:30;position:fixed;inset:0;background:#122e38;padding:10vw}
+@media(max-width:980px){.top{left:9px;right:9px;top:max(8px,env(safe-area-inset-top));gap:6px;flex-wrap:wrap}.brand{min-width:0;padding:5px 9px}.logo{height:35px;width:35px;font-size:22px}.brand strong{font-size:10px}.brand small{font-size:9px}.controls,.topTools{padding:3px}.controls button{min-width:49px;padding:8px;font-size:12px}.topTools button,.topTools a{min-width:47px;font-size:12px;padding:8px 9px}.left,.right{top:120px;max-height:calc(100dvh - 270px);left:9px;right:auto}.right{left:auto;right:9px}.bottom{left:50%;transform:translateX(-50%);right:auto;bottom:175px;width:min(270px,calc(100vw - 20px));justify-content:center}.locationCard{padding:8px 13px;text-align:center;max-width:100%;width:100%}.locationCard small{font-size:9px}.locationCard strong{font-size:12px}.locationCard p{font-size:10px}.locationCard span{display:none}#fps{display:none}.touchUI{display:block;position:absolute;inset:0;pointer-events:none}.padWrap{position:absolute;bottom:max(12px,env(safe-area-inset-bottom));display:flex;flex-direction:column;align-items:center;gap:4px}.leftPad{left:17px}.rightPad{right:17px}.padWrap>span{font-size:10px;font-weight:800;letter-spacing:.11em;color:white;text-shadow:0 2px 4px #001b2a}.mobile{width:126px;height:126px;border:2px solid #ddfff0b5;border-radius:50%;background:#153b49a3;backdrop-filter:blur(7px);touch-action:none;display:grid;place-items:center;pointer-events:auto;position:relative;user-select:none;-webkit-user-select:none}.mobile:before{content:'';position:absolute;inset:18px;border:1px dashed #b4ded1b5;border-radius:50%}.knob{width:52px;height:52px;background:linear-gradient(145deg,#e4fff0,#87cdbf);border-radius:50%;border:2px solid white;box-shadow:0 5px 16px #052e3980;pointer-events:none;position:relative;will-change:transform}.touchActions{position:absolute;right:14px;bottom:173px;display:flex;flex-direction:row;gap:7px;pointer-events:auto}.touchActions button{min-width:50px;padding:7px;font-size:11px;min-height:43px;background:#123742ec}}
+@media(max-width:570px){.top{justify-content:space-between}.brand{flex:1 0 155px;max-width:50%}.controls{order:3;width:100%;justify-content:center;margin:auto}.controls button{flex:1}.topTools{margin-left:auto}.left,.right{top:119px}.bottom{bottom:180px}.locationCard p{display:none}.leftPad{left:9px}.rightPad{right:9px}.mobile{width:112px;height:112px}.knob{width:46px;height:46px}.touchActions{right:8px;bottom:165px}.touchActions button{padding:6px;min-height:42px;font-size:10px}.locationCard{padding:8px 12px}}
+@media(max-height:600px) and (max-width:980px){.top{flex-wrap:nowrap}.brand{max-width:155px}.controls{order:unset;width:auto}.bottom{bottom:18px;max-width:210px}.locationCard p,.locationCard span{display:none}.padWrap{bottom:8px}.mobile{width:100px;height:100px}.touchActions{right:130px;bottom:12px;flex-direction:column}.touchActions button{min-height:37px}.left,.right{top:70px;max-height:calc(100dvh - 90px)}}
+@media(pointer:fine) and (min-width:981px){.touchUI{display:none}}@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* v0.8 audit: keep compact location status clear of mobile action buttons. */
+@media (max-width:980px) and (min-height:601px){.bottom{bottom:240px}}
+@media (max-width:570px) and (min-height:601px){.bottom{bottom:240px}}
+
+/* v0.9: contextual guidance, accessible undo and compact phone layout. */
+.tourCard{position:absolute;top:94px;left:50%;transform:translateX(-50%);width:min(380px,calc(100vw - 26px));z-index:5;display:flex;align-items:start;gap:12px;padding:13px 14px;border-radius:17px;background:#082d35ed;border:1px solid #a2d8be;box-shadow:0 12px 30px #00191dc0;pointer-events:auto}.tourBody{flex:1;min-width:0}.tourBody strong{font-size:13px;color:#d7ffdc}.tourBody p{font-size:12px;line-height:1.45;color:#edf6ed;margin:5px 0 0}.tourCard button{font-size:12px;min-height:40px;padding:8px 10px;flex:none}.settingGrid button:disabled{opacity:.52;cursor:not-allowed}
+@media(max-width:570px){.tourCard{top:126px;left:8px;right:8px;transform:none;width:auto;padding:10px}.tourBody p{font-size:11px}.tourCard button{font-size:11px}}
+@media(max-height:600px){.tourCard{top:68px;width:min(340px,calc(100vw - 20px))}}
+/* v1.3: when a mobile drawer is open, do not let gameplay HUD obscure it. */
+@media(max-width:980px){
+ .left:not([hidden]) ~ .bottom,.right:not([hidden]) ~ .bottom,
+ .left:not([hidden]) ~ .touchUI,.right:not([hidden]) ~ .touchUI{display:none}
+}
+
+/* R17 graphic mode has a compact accessible control; gameplay controls remain unobscured. */
+#visualDetail{min-width:114px}
+
+/* R23: accessible single-pointer control; avoids joystick dragging. */
+.nigin-tap-controls{position:fixed;right:12px;bottom:max(174px,env(safe-area-inset-bottom));z-index:75;pointer-events:auto;font-family:system-ui,sans-serif;color:#e9faf6}
+#tapControlsToggle,#tapControlsPanel button{color:#edfcf6;background:#173d42;border:1px solid #9bdccf;border-radius:12px;min-height:46px;min-width:46px;font-weight:650;cursor:pointer}
+#tapControlsToggle{padding:10px 15px;box-shadow:0 6px 20px #0008}
+#tapControlsPanel{position:fixed;right:12px;bottom:max(12px,env(safe-area-inset-bottom));width:min(340px,calc(100vw - 24px));max-height:75vh;overflow:auto;background:#0b252beF;border:1px solid #9cdacb;border-radius:18px;padding:13px;box-shadow:0 16px 55px #000b;backdrop-filter:blur(12px)}
+#tapControlsPanel[hidden]{display:none!important}
+#tapControlsPanel strong{font-size:13px;display:block;margin-bottom:10px;line-height:1.45}
+.nigin-tap-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+#tapControlsPanel button{padding:8px;font-size:12px;line-height:1.2}
+#tapControlsPanel button[aria-pressed=true]{background:#c1f1de;color:#082c30;border-color:white}
+#tapControlsPanel p{font-size:11px;line-height:1.5;color:#cce6df;margin:8px 0 0}
+.nigin-tap-controls button:focus-visible{outline:3px solid #fff;outline-offset:3px}
+body.nigin-tap-mode .touchUI,body.nigin-tap-mode .mobileControls{display:none!important}
+body.nigin-tap-mode #tapControlsToggle{position:fixed;right:16px;bottom:min(calc(75vh + 20px),calc(100vh - 80px))}
+@media(max-height:520px){#tapControlsPanel{max-height:63vh}.nigin-tap-controls{bottom:110px}}
+/* R23 visual QA: do not obscure the original mobile action buttons. */
+.nigin-tap-controls{top:max(136px,env(safe-area-inset-top));bottom:auto}
+body.nigin-tap-mode #tapControlsToggle{top:max(136px,env(safe-area-inset-top));bottom:auto}
+.nigin-tap-controls,body.nigin-tap-mode #tapControlsToggle{left:12px;right:auto}
+
+/* 2D availability mode: only shown when WebGL initialization returns null */
+.n2-fallback{position:fixed;inset:0;z-index:100;color:#f0faf6;font-family:system-ui,sans-serif;pointer-events:none}
+.n2-fallback>*{pointer-events:auto}
+.n2-head{position:absolute;top:max(12px,env(safe-area-inset-top));left:clamp(10px,3vw,28px);right:clamp(10px,3vw,28px);display:flex;justify-content:space-between;align-items:center;gap:10px;background:#092931e8;border:1px solid #8bc6b5;border-radius:15px;padding:10px 15px;box-shadow:0 10px 26px #0005}
+.n2-brand{display:flex;flex-direction:column;gap:3px}.n2-brand strong{font-size:18px}.n2-brand span{font-size:10px;letter-spacing:.055em;color:#c3dfd7}
+.n2-head a{background:#21555b;color:#e8fff9;padding:11px;border:1px solid #9bd7c7;border-radius:10px;font-size:13px;min-height:42px}
+.n2-message{position:absolute;top:85px;left:50%;transform:translateX(-50%);margin:0;max-width:min(640px,96%);text-align:center;background:#092a33d9;padding:9px 13px;border-radius:12px;font-size:12px;line-height:1.4}
+.n2-docks{position:absolute;bottom:max(10px,env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);width:min(930px,calc(100% - 16px));display:grid;grid-template-columns:1fr 1fr 1.45fr;gap:10px}
+.n2-buttons{display:flex;flex-wrap:wrap;align-content:center;justify-content:center;gap:5px;background:#092931e8;border:1px solid #8bc6b5;border-radius:15px;padding:8px}
+.n2-buttons b{width:100%;text-align:center;font-size:10px;letter-spacing:.11em;color:#b9e5d6}
+.n2-buttons button{min-height:44px;padding:7px 11px;background:#1c5059;color:#f5fefa;border:1px solid #8bc6b5;border-radius:10px;font-size:12px;font-weight:650}
+.n2-buttons button:hover{background:#2b6873}.n2-buttons button:focus-visible,.n2-head a:focus-visible{outline:3px solid #f7ff9f;outline-offset:2px}
+@media(max-width:670px){.n2-head{padding:8px}.n2-brand strong{font-size:14px}.n2-brand span{font-size:9px}.n2-head a{font-size:11px;padding:8px}.n2-message{top:78px;font-size:11px}.n2-docks{grid-template-columns:1fr 1fr;gap:5px}.n2-buttons:last-child{grid-column:1/-1}.n2-buttons{padding:5px}.n2-buttons button{min-height:40px}}
+@media(max-height:530px){.n2-head{top:4px;padding:4px}.n2-message{top:52px}.n2-docks{bottom:4px}.n2-buttons button{min-height:34px}}
+@media (scripting:none){html,body{overflow:auto!important;height:auto!important}body>*:not(noscript){display:none!important}}.nigin-nojs{box-sizing:border-box;width:calc(100% - 32px);max-width:34rem;margin:10vh auto;padding:20px 22px;border-radius:14px;background:#0f2b2c;color:#eef7f2;border:2px solid #9fe0c9;font:16px/1.55 system-ui,sans-serif}.nigin-nojs strong{display:block;font-size:20px;margin-bottom:8px}.nigin-nojs p{margin:8px 0 0}</style></head><body><noscript><div class="nigin-nojs" role="alert"><strong>NIGIN braucht JavaScript, um zu starten.</strong><p>Diese Ansicht führt keine Scripts aus – zum Beispiel die Vorschau der Dateien-App auf iPhone und iPad.</p><p>So geht es: die Datei über „Teilen“ in einem Browser oder einer HTML-Viewer-App öffnen, die JavaScript ausführt; am Computer die Datei direkt im Browser öffnen.</p><p>Die Welt läuft vollständig offline, es werden keine Daten gesendet.</p></div></noscript>
+<canvas aria-label="3D-Spielwelt; ohne geografischen Genauigkeitsnachweis" id="view"></canvas><div class="hud">
+<header class="top"><div aria-label="Nigin Aarewelt" class="brand"><div class="logo">N<span>·</span></div><div><strong>NIGIN WELTEN</strong><small>AARE · v1.16.8 · OFFLINE</small></div></div><nav aria-label="Kameraperspektive" class="controls"><button id="ego">Ego</button><button id="follow">Nigin</button><button class="active" id="drone">Luft</button></nav><div class="topTools"><button aria-controls="sites" aria-expanded="false" id="sitesToggle">Orte</button><button aria-controls="settingsPane" aria-expanded="false" id="settingsToggle">Menü</button><a aria-label="Haus, zur Hauswelt wechseln" href="Nigin_Haus_v1_16_8.html">Haus</a></div></header>
+<aside aria-label="Orte und lokale Geodaten" class="left" hidden="" id="sites"><div class="drawerHead"><div><small>ENTDECKEN</small><h2>Orte &amp; Welten</h2></div><button aria-label="Ortemenü schliessen" id="closeSites">×</button></div><p class="intro">Wähle einen Ort. Die Skizzenwelt ist frei modelliert, nicht vermessungstreu.</p><div aria-label="Orte besuchen" class="menu" role="group"><button data-visit="kraftwerk">Kraftwerk<span>Aare &amp; Architektur</span></button><button data-visit="insel">Vogelinsel<span>Wasser &amp; Natur</span></button><button data-visit="garten">Gärten<span>Parzellen</span></button><button data-visit="sport">Sportpark<span>Schachen</span></button><button data-visit="bruecke">Fussbrücke<span>Uferweg</span></button></div><div class="sectionTitle">Geodaten · lokal</div><div class="menu"><button id="geoDemo">Testszene<span>Synthetische Daten</span></button><button id="geoImport">Importieren<span>GeoScene v1 / v2 + optimierbares Gelände</span></button><button id="geoToggle">Geodatenansicht<span>Skizzenwelt wechseln</span></button><button id="reset">Nigin finden<span>Zum Ufer</span></button></div><input accept=".json,application/json" hidden="" id="geoFile" type="file"/><p class="note">Importierte Daten bleiben nur während der Sitzung im Arbeitsspeicher; ihre Herkunft ist ungeprüft. Gebäudehöhen nur wenn explizit in der Datei angegeben.</p><p class="note" id="geoCredit">Keine reale Aarau-Geodatenkachel geladen.</p></aside>
+<aside aria-label="Spiel-Einstellungen" class="right" hidden="" id="settingsPane"><div class="drawerHead"><div><small>SPIEL &amp; SICHERHEIT</small><h2>Einstellungen</h2></div><button aria-label="Einstellungsmenü schliessen" id="closeSettings">×</button></div><div class="settingGrid"><button id="toggleMap">Karte · M</button><button id="day">Tag</button><button id="quality">Normal</button><button aria-pressed="true" id="visualDetail">Details: Hoch</button><button id="togglePerf">Leistung · P</button><button aria-pressed="true" id="geoCulling">Geo-Culling: An</button><button aria-label="Gelände · G, Höhe und Datenherkunft" id="terrainInfo">Gelände · G</button><button aria-controls="geoPosPane" aria-expanded="false" id="geoPosition">LV95-Position</button><button aria-controls="geoAuditPane" aria-expanded="false" id="geoAudit">Datenstatus</button><button aria-label="Gelände optimieren, Grafik lokal" id="optimizeTerrain">Gelände optimieren</button></div><section class="panel" hidden="" id="mapPane"><h3>Übersicht</h3><canvas aria-label="Schematische Übersicht" height="230" id="map" role="img" width="230"></canvas><p class="note">Skizzenwelt ohne Georeferenz; importierter Geo-Modus im LV95-Lokalraster.</p></section><section class="panel" hidden="" id="geoPosPane"><h3>Position der Figur</h3><p aria-live="polite" id="geoPosText">Nur in der Geodatenansicht verfügbar.</p><p class="note">Angaben aus der importierten Datei; Genauigkeit und amtliche Herkunft werden hier nicht bestätigt. Keine Standortberechtigung erforderlich.</p></section><section class="panel" hidden="" id="geoAuditPane"><h3>Geodaten · Herkunft und Grenzen</h3><p aria-live="polite" class="note" id="geoAuditText" role="status">Keine externen Geodaten geladen.</p><p class="note">Importangaben werden nur aus der lokalen Datei gelesen. Sie sind kein amtlicher Herkunfts-, Lizenz- oder Genauigkeitsnachweis. Keine Standortabfrage.</p></section><section class="panel" hidden="" id="perfPane"><h3>Leistung</h3><p id="perfDetails">Ermittle Renderdaten …</p></section><div class="sectionTitle">Hilfe &amp; Navigation</div><div class="settingGrid"><button id="tourHelp">Einführung starten</button><button disabled="" id="undo">Ort rückgängig · U</button></div><div class="sectionTitle">Meine Dateien</div><div class="settingGrid"><button id="save">Spielstand exportieren</button><button id="load">Spielstand laden</button></div><input accept=".json,application/json" hidden="" id="loadFile" type="file"/><p class="note">Kein automatisches Speichern. Exportierte Dateien lassen sich nur über dein Gerät löschen.</p><div class="sectionTitle">Privatsphäre</div><button class="wide" id="privacyBtn">Datenschutz ansehen</button><button class="wide danger" id="clearSession">Sitzung zurücksetzen</button><p class="note" hidden="" id="privacyText">Die Anwendung verwendet keine Konten, Cookies, Telemetrie, externen Skripte oder Cloudverbindung. Geodateien und Spielzustand werden nur im Arbeitsspeicher verarbeitet. Keine automatische Speicherung. Du entscheidest über manuelle JSON-Exporte. Browser, Betriebssystem und bereits heruntergeladene Dateien liegen ausserhalb der Kontrolle dieser Anwendung.</p></aside>
+<section aria-label="Einführung" aria-live="polite" class="tourCard" hidden="" id="tourCard"><div class="tourBody"><strong id="tourTitle">1/3</strong><p id="tourDetail"></p></div><button aria-label="Schliessen, Einführung überspringen" id="tourSkip">Schliessen</button></section><footer class="bottom"><div class="locationCard"><small id="pos">NIGIN · AARE</small><strong id="siteTitle">Die Aare bei Aarau</strong><p id="siteDesc">Frei modellierte Skizzenwelt; keine geografische Genauigkeit.</p><span id="instruction">WASD: bewegen · 1–3: Kamera · E: erkunden · U: rückgängig · H: Hilfe</span></div><span id="fps">— FPS</span></footer>
+<div aria-label="Touch-Steuerung" class="touchUI" id="touchUI"><div class="padWrap leftPad"><span>BEWEGEN</span><div aria-label="Linker Bewegungsjoystick" class="mobile" id="joystick" role="group"><div class="knob" id="knob"></div></div></div><div class="touchActions"><button aria-label="Aktion, nächsten Ort erkunden" id="mobileInteract">Aktion</button><button data-mode="follow">Nigin</button><button data-mode="drone">Luft</button></div><div class="padWrap rightPad"><span>UMSEHEN</span><div aria-label="Rechter Kamera-Joystick" class="mobile" id="lookJoystick" role="group"><div class="knob" id="lookKnob"></div></div></div></div>
+<section class="welcome" id="welcome"><div class="welcomeBox"><div class="kicker">DEINE WELT · DEINE KONTROLLE</div><h1>Entdecke die Aare.</h1><p>Erkunde eine eigenständige 3D-Spielwelt mit Nigin. Links bewegen, rechts die Kamera steuern – gleichzeitig und unabhängig.</p><p class="subtle">Diese Landschaft ist eine <strong>synthetische Skizze</strong>, keine vermessungstreue Aarau-Rekonstruktion. Amtliche Daten können separat und nur lokal importiert werden.</p><button id="start">Welt betreten</button><small>Ohne Konto · Ohne Tracking · Ohne automatische Speicherung · Offline</small></div></section>
+<div hidden="" id="error"><h2>WebGL nicht verfügbar</h2><p>Bitte Browser mit aktivierter WebGL-Grafik verwenden.</p></div></div><script>'use strict';
+// NIGIN portable 2D fallback: explicitly an orientation aid, not a 3D or GIS renderer.
+function niginStart2DFallback(kind, canvasId) {
+  const canvas = document.getElementById(canvasId);
+  const context = canvas.getContext('2d');
+  const hud = document.querySelector('.hud');
+  if (hud) { hud.hidden = true; hud.style.display = 'none'; }
+  // In HOMEWORLD the entry screen and help dialog sit outside .hud.
+  for (const id of ['entry','helpModal']) { const el=document.getElementById(id); if(el) el.style.display='none'; }
+  const errorPanel = document.getElementById('error') || document.getElementById('webglError');
+  if (errorPanel) errorPanel.hidden = true;
+  if (!context) return;
+  let x = kind === 'aare' ? 51 : 46, y = kind === 'aare' ? 71 : 52;
+  let bearing = 0, day = 0;
+  const sites = kind === 'aare' ? [
+    ['Aare-Ufer',48,72],['Vogelinsel',53,39],['Gärten',24,55],['Sportplatz',77,25],['Brücke',62,66]
+  ] : [
+    ['Wohnbereich',45,52],['Atelier',25,32],['Küche',71,33],['Terrasse',77,77],['Garten',20,83]
+  ];
+  const shell = document.createElement('section');
+  shell.className = 'n2-fallback';
+  shell.setAttribute('aria-label','2D-Ersatzansicht und Steuerung');
+  const heading = document.createElement('div');heading.className='n2-head';
+  const brand = document.createElement('div');brand.className='n2-brand';
+  const title = document.createElement('strong');title.textContent=kind==='aare'?'NIGIN · Aarewelt':'NIGIN · Hauswelt';
+  const detail = document.createElement('span');detail.textContent='SCHEMATISCHE 2D-ERSATZANSICHT · KEIN 3D';
+  brand.append(title,detail);
+  const navigation = document.createElement('a');navigation.href=kind==='aare'?'Nigin_Haus_v1_16_8.html':'Nigin_Aare_v1_16_8.html';navigation.textContent=kind==='aare'?'Zur Hauswelt':'Zur Aarewelt';
+  heading.append(brand,navigation);
+  const info = document.createElement('p'); info.className='n2-message'; info.setAttribute('role','status'); info.setAttribute('aria-live','polite');
+  const docks = document.createElement('div');docks.className='n2-docks';
+  const move = document.createElement('div');move.className='n2-buttons';
+  const look = document.createElement('div');look.className='n2-buttons';
+  const tools = document.createElement('div');tools.className='n2-buttons';
+  const makeButton=(parent,label,fn)=>{const b=document.createElement('button');b.type='button';b.textContent=label;b.addEventListener('click',fn);parent.appendChild(b);return b;};
+  let width=1,height=1;
+  const clamp=(n,min,max)=>Math.max(min,Math.min(max,n));
+  const message=t=>{info.textContent=t};
+  function step(dx,dy){x=clamp(x+dx,2,98);y=clamp(y+dy,2,98);draw();message(`Position ${Math.round(x)} / ${Math.round(y)} · Blick ${Math.round((bearing*180/Math.PI+360)%360)}°`);}
+  function turn(inc){bearing+=inc;draw();message('Blickrichtung: '+Math.round((bearing*180/Math.PI+360)%360)+'°');}
+  const label=document.createElement('b');label.textContent='BEWEGEN';move.append(label);
+  makeButton(move,'↑',()=>step(0,-3));makeButton(move,'←',()=>step(-3,0));makeButton(move,'↓',()=>step(0,3));makeButton(move,'→',()=>step(3,0));
+  const lookLabel=document.createElement('b');lookLabel.textContent='BLICK';look.append(lookLabel);
+  makeButton(look,'↶',()=>turn(-Math.PI/8));makeButton(look,'↷',()=>turn(Math.PI/8));
+  makeButton(look,'Erkunden',()=>{let nearest=sites.map(s=>[s,Math.hypot(s[1]-x,s[2]-y)]).sort((a,b)=>a[1]-b[1])[0];message(nearest[1]<19?'Erkundet: '+nearest[0][0]:'Kein Ziel in unmittelbarer Nähe.');});
+  const toolLabel=document.createElement('b');toolLabel.textContent='DATEIEN';tools.append(toolLabel);
+  makeButton(tools,'Tag / Nacht',()=>{day=(day+1)%2;draw();message(day?'Nachtmodus':'Tagmodus');});
+  makeButton(tools,'Zurücksetzen',()=>{x=kind==='aare'?51:46;y=kind==='aare'?71:52;bearing=0;day=0;draw();message('Auf Ausgangspunkt zurückgesetzt.');});
+  const fileInput=document.createElement('input');fileInput.type='file';fileInput.accept='.json,application/json';fileInput.hidden=true;
+  makeButton(tools,'JSON sichern',()=>{
+    const data=JSON.stringify({kind:'nigin-2d-fallback-'+kind,version:1,x,y,bearing,day});
+    const url=URL.createObjectURL(new Blob([data],{type:'application/json'}));
+    const a=document.createElement('a');a.href=url;a.download='nigin_'+kind+'_2d_fallback_save.json';a.click();setTimeout(()=>URL.revokeObjectURL(url),2000);
+    message('2D-Spielstand gespeichert. Nicht mit dem 3D-Speicherformat verwechseln.');
+  });
+  makeButton(tools,'JSON laden',()=>{fileInput.value='';fileInput.click()});
+  fileInput.addEventListener('change',async()=>{
+    const f=fileInput.files?.[0];if(!f)return;
+    try{
+      if(f.size>2048)throw Error('Maximal 2 KB für 2D-Spielstände.');
+      const s=JSON.parse(await f.text());
+      if(!s||Array.isArray(s)||typeof s!=='object'||Object.keys(s).sort().join(',')!=='bearing,day,kind,version,x,y'||s.kind!=='nigin-2d-fallback-'+kind||s.version!==1||![s.x,s.y,s.bearing].every(Number.isFinite)||s.x<2||s.x>98||s.y<2||s.y>98||Math.abs(s.bearing)>100000||![0,1].includes(s.day))throw Error('Ungültiger oder anderer Spielstand.');
+      x=s.x;y=s.y;bearing=s.bearing;day=s.day;draw();message('2D-Spielstand erfolgreich geladen.');
+    } catch(err){message('Import abgelehnt: '+err.message)}finally{fileInput.value=''}
+  });
+  docks.append(move,look,tools);shell.append(heading,info,docks,fileInput);document.body.appendChild(shell);
+  function draw(){
+    const w=width,h=height;context.setTransform(1,0,0,1,0,0);
+    context.fillStyle=day?'#0b242a':'#95bfb7';context.fillRect(0,0,w,h);
+    const scale=Math.min(w/124,h/116);const ox=(w-100*scale)/2,oy=(h-100*scale)/2;
+    context.save();context.translate(ox,oy);context.scale(scale,scale);
+    if(kind==='aare'){
+      context.fillStyle=day?'#29442f':'#82a47a';context.fillRect(0,0,100,100);
+      context.beginPath();for(let yy=0;yy<=100;yy+=2){const xx=50+7*Math.sin(yy/19);if(yy===0)context.moveTo(xx-13,yy);else context.lineTo(xx-13,yy)}for(let yy=100;yy>=0;yy-=2){const xx=50+7*Math.sin(yy/19);context.lineTo(xx+13,yy)}context.closePath();context.fillStyle=day?'#24637b':'#3b86a6';context.fill();
+      context.fillStyle='#8db47b';context.beginPath();context.ellipse(50,39,7,16,-.2,0,Math.PI*2);context.fill();
+      context.strokeStyle='#d7d0b8';context.lineWidth=2;context.beginPath();context.moveTo(27,67);context.lineTo(81,65);context.stroke();
+    } else {
+      context.fillStyle=day?'#263c34':'#79a88b';context.fillRect(0,0,100,100);
+      context.fillStyle=day?'#5b7073':'#d2cbbb';context.fillRect(13,13,74,58);
+      context.strokeStyle='#274955';context.lineWidth=2;context.strokeRect(13,13,74,58);
+      context.strokeStyle='#738981';context.beginPath();context.moveTo(53,13);context.lineTo(53,71);context.moveTo(13,45);context.lineTo(87,45);context.stroke();
+      [['#bf896a',22,24,16,9],['#9fbeae',62,24,16,10],['#bd8668',36,51,18,9]].forEach(o=>{context.fillStyle=o[0];context.fillRect(...o.slice(1))});
+      context.fillStyle='#bf9878';context.fillRect(59,73,30,11);
+    }
+    for(const s of sites){context.fillStyle='#f4edc5';context.strokeStyle='#173a42';context.lineWidth=.6;context.beginPath();context.arc(s[1],s[2],2,0,Math.PI*2);context.fill();context.stroke();context.fillStyle=day?'#ebf2e8':'#13373a';context.font='3.2px system-ui';context.fillText(s[0],s[1]+3,s[2]-2);}
+    context.save();context.translate(x,y);context.rotate(bearing);context.fillStyle='#fcda8d';context.strokeStyle='#103b48';context.lineWidth=1;context.beginPath();context.moveTo(0,-4);context.lineTo(3.4,3);context.lineTo(-3.4,3);context.closePath();context.fill();context.stroke();context.restore();context.restore();
+  }
+  function resize(){const dpr=Math.min(window.devicePixelRatio||1,2);const ww=Math.max(1,window.innerWidth),hh=Math.max(1,window.innerHeight);const target=Math.min(dpr,Math.sqrt(1300000/(ww*hh)));width=Math.max(1,Math.floor(ww*target));height=Math.max(1,Math.floor(hh*target));canvas.width=width;canvas.height=height;draw();}
+  window.addEventListener('resize',resize);
+  window.addEventListener('keydown',e=>{
+    const t=e.target;if(t?.closest?.('button,input,textarea,select')||e.altKey||e.ctrlKey||e.metaKey)return;
+    const d={KeyW:[0,-3],ArrowUp:[0,-3],KeyS:[0,3],ArrowDown:[0,3],KeyA:[-3,0],ArrowLeft:[-3,0],KeyD:[3,0],ArrowRight:[3,0]};
+    if(d[e.code]){e.preventDefault();step(...d[e.code])}else if(e.code==='KeyQ')turn(-Math.PI/8);else if(e.code==='KeyE')turn(Math.PI/8);
+  },{passive:false});
+  resize();message('WebGL nicht verfügbar: vereinfachte 2D-Erkundung. Original-3D benötigt GPU/WebGL. Die 2D-Spielstände sind separat.');
+}
+
+(()=>{
+const $=id=>document.getElementById(id),PI=Math.PI,TAU=2*PI,clamp=(v,a,b)=>Math.max(a,Math.min(b,v)),lerp=(a,b,t)=>a+(b-a)*t;
+const c=$('view');const gl=c.getContext('webgl',{antialias:false,alpha:false,depth:true,stencil:false,powerPreference:'low-power'});
+if(!gl){niginStart2DFallback('aare','view');return;}
+// Coordinates are authored sketch coordinates in arbitrary local metres, NOT LV95/georeferenced.
+const S={started:false,mode:'drone',p:[-149,0,88],heading:.56,orbit:.85,pitch:.62,zoom:460,turn:0,keys:new Set(),pointer:false,lastX:0,lastY:0,joy:[0,0],lookJoy:[0,0],selected:null,day:0,frame:0,time:0,quality:1,showMap:false,showPerf:false,visualDetail:1,geoCulling:true,geoMode:false,geoP:[0,0,0],sketchP:null,geoScene:null,tourStep:0,tourActive:false,undoState:null};
+const COLORS={ground:'#829c67',river:'#377e98',island:'#8fab76',road:'#aaa69a',roof:'#bf755c',wall:'#d9d0b7'};
+let vertices=[];let meshMaterial=0;const M_LAND=0,M_WATER=1;const VERTEX_STRIDE=9;const solids=[];const hotspots=[];let triangleTotal=0,drawCount=0,program=null,buffer=null,attr=null,uni=null;let geoMaster=null,geoBuffer=null,geoStaticCount=0,geoBlocks=[],geoCameraBlocks=[],geoStats=null,geoData=null,geoSpatialChunks=[];
+const hex=s=>{let n=parseInt(s.slice(1),16);return [(n>>16&255)/255,(n>>8&255)/255,(n&255)/255]};
+const MAX_GEO_FLOATS=900000; // float budget; material is packed into normal.y high range (land [-1,1], water [3,5])
+function triangle(a,b,d,color){if(geoBuildActive && vertices.length+27>MAX_GEO_FLOATS)throw Error('Geo-Mesh-Budget 900000 Float-Werte überschritten – kleinere Kachel importieren');const u=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],v=[d[0]-a[0],d[1]-a[1],d[2]-a[2]],n=[u[1]*v[2]-u[2]*v[1],u[2]*v[0]-u[0]*v[2],u[0]*v[1]-u[1]*v[0]];const l=Math.hypot(...n)||1;for(let i=0;i<3;i++)n[i]/=l;const k=hex(color);for(const p of [a,b,d])vertices.push(...p,n[0],n[1]+4*meshMaterial,n[2],...k);triangleTotal++}
+function quad(a,b,d,e,color){triangle(a,b,d,color);triangle(a,d,e,color)}
+function box(x,y,z,w,h,depth,color){const X=w/2,Z=depth/2,y0=y,y1=y+h;const A=[x-X,y0,z-Z],B=[x+X,y0,z-Z],C=[x+X,y0,z+Z],D=[x-X,y0,z+Z],E=[x-X,y1,z-Z],F=[x+X,y1,z-Z],G=[x+X,y1,z+Z],H=[x-X,y1,z+Z];quad(D,C,B,A,color);quad(E,F,G,H,color);quad(A,B,F,E,color);quad(B,C,G,F,color);quad(C,D,H,G,color);quad(D,A,E,H,color)}
+function gable(x,z,w,depth,base,stories,wall,roof,axis='z'){const h=stories*3.0,y=base;box(x,y,z,w,h,depth,wall);let hh=Math.min(3.5,w*.23),W=w/2,D=depth/2;
+ if(axis==='z'){quad([x-W,y+h,z-D],[x,y+h+hh,z-D],[x,y+h+hh,z+D],[x-W,y+h,z+D],roof);quad([x,y+h+hh,z-D],[x+W,y+h,z-D],[x+W,y+h,z+D],[x,y+h+hh,z+D],roof);triangle([x-W,y+h,z-D],[x+W,y+h,z-D],[x,y+h+hh,z-D],roof);triangle([x+W,y+h,z+D],[x-W,y+h,z+D],[x,y+h+hh,z+D],roof)}
+ else {quad([x-W,y+h,z-D],[x-W,y+h+hh,z],[x+W,y+h+hh,z],[x+W,y+h,z-D],roof);quad([x-W,y+h+hh,z],[x-W,y+h,z+D],[x+W,y+h,z+D],[x+W,y+h+hh,z],roof)}
+ for(let i=0;i<Math.floor(w/5);i++){let wx=x-w/2+2.5+i*5;for(let s=0;s<stories;s++)box(wx,y+1.4+s*3,z+depth/2+.07,1.35,1.08,.12,'#759ba0')}
+ // Attached facade lintels and roofs; all ornaments follow their parent house.
+ box(x,y+h*.55,z+depth/2+.075,w*.72,.09,.12,'#c8b5a4');
+ if(rand(Math.round(x*31+z*7))>.77){
+   const cx=x+w*.17,cz=z-depth*.17;
+   box(cx,y+h+.48,cz,.77,1.2,.78,'#a78270');
+   box(cx,y+h+1.12,cz,1.03,.14,1.02,'#6e655c');
+ }
+ solids.push({x,z,w:w+1.5,d:depth+1.5});}
+function rand(n){let a=Math.sin(n*127.1+76.19)*43758.5453;return a-Math.floor(a)}
+function terrain(x,z){return -0.45+Math.pow(Math.max(0,-210-x)/160,1.3)*28+Math.pow(Math.max(0,x-225)/190,1.4)*16+Math.sin(x*.025+z*.016)*.72+Math.sin(z*.049)*.34}
+function flow(z){return 15*Math.sin((z+90)/130)+9*Math.sin(z/68)}
+function half(z){return 71+4*Math.sin(z/95)}
+function islandWidth(z){if(z< -195||z>195)return 0;const t=(z+195)/390;return Math.max(0,24*Math.pow(Math.sin(PI*t),.52));}
+function islandCenter(z){return flow(z)+9;}
+function inIsland(x,z){return islandWidth(z)>1&&Math.abs(x-islandCenter(z))<islandWidth(z)-.7;}
+function onPlant(x,z){return ((z>16&&z<48)||(z>48&&z<57))&&x>-113&&x<33}
+function onFootbridge(x,z){return z>172&&z<180&&x>15&&x<105}
+function water(x,z){return Math.abs(x-flow(z))<half(z)&&!inIsland(x,z)&&!onPlant(x,z)&&!onFootbridge(x,z)}
+// Optional locally imported DEM v2: elevations relative to the tile's documented height origin.
+// x is east and z points south; the grid rows increase towards south.
+function validateDEM(t){
+ if(!t||t.format!=='nigin-dem-grid-v1'||!Number.isInteger(t.width)||!Number.isInteger(t.height)||t.width<2||t.height<2||t.width>129||t.height>129||t.width*t.height>16641)throw Error('Geländeraster: Format oder Dimensionen ungültig');
+ for(const k of ['min_x','min_z','spacing_m','height_origin_m'])if(typeof t[k]!=='number'||!Number.isFinite(t[k]))throw Error('Geländeraster: ungültiger Zahlenwert '+k);
+ if(t.spacing_m<1||t.spacing_m>25||t.min_x< -380||t.min_z< -380||t.min_x+(t.width-1)*t.spacing_m>380.01||t.min_z+(t.height-1)*t.spacing_m>380.01)throw Error('Geländeraster ausserhalb der Szenengrenze');
+ if(t.height_origin_m<0||t.height_origin_m>6000)throw Error('Höhenbezug ungültig');
+ if(!['LN02','LHN95','UNKNOWN'].includes(t.vertical_datum))throw Error('Vertikaldatum muss angegeben werden');
+ if(!Array.isArray(t.heights)||t.heights.length!==t.width*t.height)throw Error('Geländeraster: Anzahl Höhenwerte falsch');
+ for(const v of t.heights)if(typeof v!=='number'||!Number.isFinite(v)||Math.abs(v)>400)throw Error('Geländeraster: fehlende oder unplausible Höhen');
+ if(t.visual_stride!==undefined){
+  if(![1,2,4].includes(t.visual_stride))throw Error('Gelände-LOD: ungültiger Faktor');
+  if(t.visual_stride>1){
+   if(typeof t.visual_max_error_m!=='number'||!Number.isFinite(t.visual_max_error_m)||t.visual_max_error_m<0||t.visual_max_error_m>.5)throw Error('Gelände-LOD: maximale Abweichung über 0,50 m');
+   const actual=terrainLODerror(t,t.visual_stride);
+   if(actual>t.visual_max_error_m+0.0000001)throw Error('Gelände-LOD verletzt nachgerechnete Fehlergrenze');
+  }
+ }
+
+ return t;
+}
+// Render-only DEM level of detail: collision and ground continue to use full-resolution heights.
+function terrainLODerror(t,stride){
+ if(!Number.isInteger(stride)||![1,2,4].includes(stride))throw Error('Unzulässiger Gelände-LOD-Faktor');
+ const h=t.heights,w=t.width,hh=t.height;let maxErr=0;
+ for(let j=0;j<hh;j++)for(let i=0;i<w;i++){
+  const x=Math.floor(i/stride)*stride,z=Math.floor(j/stride)*stride,x2=Math.min(w-1,x+stride),z2=Math.min(hh-1,z+stride);
+  let u=(i-x)/Math.max(1,x2-x),v=(j-z)/Math.max(1,z2-z),A=h[z*w+x],B=h[z*w+x2],C=h[z2*w+x2],D=h[z2*w+x];
+  // Quad has two triangles ABC and ACD, exactly as drawTerrainDEM.
+  let interpolated=u>=v?A+(B-A)*u+(C-B)*v:A+(D-A)*v+(C-D)*u;
+  maxErr=Math.max(maxErr,Math.abs(h[j*w+i]-interpolated));
+ }
+ return maxErr;
+}
+function sampleDEM(t,x,z){
+ if(!t)return 0;
+ // Never extrapolate a measured DEM beyond its footprint. Fail closed instead of clamping.
+ if(!Number.isFinite(x)||!Number.isFinite(z)||x<t.min_x-1e-7||z<t.min_z-1e-7||x>t.min_x+(t.width-1)*t.spacing_m+1e-7||z>t.min_z+(t.height-1)*t.spacing_m+1e-7)return NaN;
+ let a=clamp((x-t.min_x)/t.spacing_m,0,t.width-1),b=clamp((z-t.min_z)/t.spacing_m,0,t.height-1);
+ let i=Math.min(t.width-2,Math.floor(a)),j=Math.min(t.height-2,Math.floor(b)),u=a-i,v=b-j,idx=j*t.width+i;
+ let h=t.heights;return lerp(lerp(h[idx],h[idx+1],u),lerp(h[idx+t.width],h[idx+t.width+1],u),v);
+}
+let pendingDEM=null,geoBuildActive=false;
+function geoAltitude(x,z){return sampleDEM(geoBuildActive?pendingDEM:(geoData?.terrain||null),x,z)}
+function geoSlopeOK(x,z){let t=geoData?.terrain;if(!t)return true;let d=Math.min(2,t.spacing_m/2),a=geoAltitude(x-d,z),b=geoAltitude(x+d,z),c=geoAltitude(x,z-d),e=geoAltitude(x,z+d);return [a,b,c,e].every(Number.isFinite)&&Math.hypot((b-a)/(2*d),(e-c)/(2*d))<=0.65;}
+
+function ground(x,z){if(S.geoMode)return geoAltitude(x,z);return onPlant(x,z)?5.1:onFootbridge(x,z)?3.5:inIsland(x,z)?2.45:terrain(x,z)}
+function walkable(x,z){if(S.geoMode)return geoWalkable(x,z);if(!Number.isFinite(x)||!Number.isFinite(z)||Math.abs(x)>395||Math.abs(z)>375||water(x,z))return false;for(const b of solids){if(Math.abs(x-b.x)<b.w/2+.7&&Math.abs(z-b.z)<b.d/2+.7)return false}return true}
+function meshGround(){const step=14;for(let z=-406;z<406;z+=step)for(let x=-406;x<406;x+=step){const q=(xx,zz)=>[xx,terrain(xx,zz),zz];const a=q(x,z),b=q(x+step,z),d=q(x+step,z+step),e=q(x,z+step);const n=rand(Math.floor(x/step)*119+Math.floor(z/step)*47);const color=x< -264?'#718363':x>298?'#7e9b74':n>.75?'#829d6b':n>.50?'#8aa476':'#7f9c6c';quad(a,b,d,e,color)}}
+function river(){const N=95;for(let k=0;k<N;k++){const za=-393+k*786/N,zb=za+786/N;const corners=(z,f)=>[flow(z)+f*half(z),.84,z];const a=corners(za,-1),b=corners(za,1),d=corners(zb,1),e=corners(zb,-1);meshMaterial=M_WATER;quad(a,b,d,e,k%9===0?'#4288a0':'#347a93');meshMaterial=M_LAND; // soft stripes / movement hints
+ if(k%4===0){const x=flow(za)+half(za)*(-.74+rand(k+600)*1.5);(meshMaterial=M_WATER,quad([x,.87,za],[x+3,.87,za],[x+4,.87,za+4],[x+1,.87,za+4],'#5594a5'),meshMaterial=M_LAND)}}
+ for(let k=0;k<79;k++){const za=-195+k*390/79,zb=za+390/79;const w1=islandWidth(za),w2=islandWidth(zb);const a=[islandCenter(za)-w1,2.1,za],b=[islandCenter(za)+w1,2.1,za],d=[islandCenter(zb)+w2,2.1,zb],e=[islandCenter(zb)-w2,2.1,zb];quad(a,b,d,e,k%11<3?'#829e68':'#92ab76');quad([a[0]-1,.85,za],[a[0],2.1,za],[e[0],2.1,zb],[e[0]-1,.85,zb],'#708b6d');quad([b[0],2.1,za],[b[0]+1,.85,za],[d[0]+1,.85,zb],[d[0],2.1,zb],'#779b7f')}
+}
+function roadPath(f,zmin,zmax,width,color,loops=75){for(let i=0;i<loops;i++){const a=zmin+(zmax-zmin)*i/loops,b=zmin+(zmax-zmin)*(i+1)/loops;const x=f(a),X=f(b),e=.04;quad([x-width/2,terrain(x,a)+e,a],[x+width/2,terrain(x,a)+e,a],[X+width/2,terrain(X,b)+e,b],[X-width/2,terrain(X,b)+e,b],color)}}
+function sidePaths(){roadPath(z=>flow(z)-half(z)-34,-388,388,9,'#a29f91');roadPath(z=>flow(z)+half(z)+35,-388,388,9,'#a9a596');roadPath(z=>flow(z)-half(z)-15,-310,295,2.8,'#d5c9ad');roadPath(z=>flow(z)+half(z)+17,-330,322,2.8,'#d0c6a7');for(const [x,z,w,d] of [[-196,-145,200,7],[-220,95,170,7],[196,-145,220,7],[229,104,170,7]])box(x,terrain(x,z)+.06,z,w,.045,d,'#a7a397')}
+function roofColor(i){return ['#c27457','#af6755','#8d8a82','#b36b50','#b98267','#7b8e86'][i%6]}
+function houses(){let count=0;for(let i=0;i<195;i++){const east=i>119,x=east?116+rand(i*3+3)*230:-116-rand(i*3+3)*250,z=-310+rand(i*5+7)*628;
+if(Math.abs(x-flow(z))<half(z)+22||(!east&&x < -270&&z<45)|| (east&&x>190&&z<-155&&z>-350)||(!east&&x<-170&&z>175&&z<295)||Math.abs(z-32)<32&&x>-190&&x<45)continue;
+let w=8+rand(i+10)*10,d=10+rand(i+19)*15;if(Math.abs(x+210)<20&&z>195&&z<310)continue;
+const y=terrain(x,z),col=['#d6c9af','#e1dbd0','#c6c9b7','#d6bfaa','#d2cbbf'][i%5];gable(x,z,w,d,y,rand(i+21)>.79?3:2,col,roofColor(i));count++;}
+// Visible road-edge cottages and color variation around the plant
+for(let i=0;i<11;i++){const z=-142+i*25;const x=flow(z)-half(z)-67;gable(x,z,12,15,terrain(x,z),2,'#e5d7c6',roofColor(i+3))}
+return count}
+function trees(){for(let i=0;i<340;i++){let x=-383+rand(i+12)*770,z=-370+rand(i*3+161)*740;if(Math.abs(x-flow(z))<half(z)+2&&!inIsland(x,z))continue;if(x>167&&x<357&&z<-180&&z>-348)continue;if(x<-165&&x>-324&&z>160&&z<309)continue;if(solids.some(b=>Math.abs(x-b.x)<b.w/2+4&&Math.abs(z-b.z)<b.d/2+4))continue;let scale=7+rand(i+99)*9;if(inIsland(x,z))scale*=.7;coneTree(x,z,scale,i)}
+for(let k=0;k<24;k++){const z=-162+k*14,x=islandCenter(z)+(rand(k+477)-.5)*islandWidth(z)*1.2;coneTree(x,z,9+rand(k+609)*6,400+k)} }
+function coneTree(x,z,h,id){let base=ground(x,z);box(x-.24,base,z-.24,.48,h*.4,.48,'#736a4f');let sides=6;for(let layer=0;layer<2;layer++){let rad=h*(layer? .24:.32),bottom=base+h*(layer?.53:.26),top=bottom+h*.58;for(let j=0;j<sides;j++){let a=j*TAU/sides,b=(j+1)*TAU/sides;triangle([x+rad*Math.cos(a),bottom,z+rad*Math.sin(a)],[x+rad*Math.cos(b),bottom,z+rad*Math.sin(b)],[x,top,z],['#507e63','#5a8565','#668f71','#5c7f5c'][(id+j+layer)%4])}}}
+function bridge(x0,x1,z,y=3.2){box((x0+x1)/2,y-1,z,x1-x0,1.2,7,'#b0aa99');box((x0+x1)/2,y,z,x1-x0,.32,8.5,'#d2cbb9');for(let x=x0+7;x<x1;x+=13){box(x,y+.3,z-3.8,.42,1.1,.4,'#e3d9c0');box(x,y+.3,z+3.8,.42,1.1,.4,'#e3d9c0')}box((x0+x1)/2,y+1.3,z-3.8,x1-x0,.19,.27,'#d2d3c6');box((x0+x1)/2,y+1.3,z+3.8,x1-x0,.19,.27,'#d2d3c6');}
+function plant(){const z=32;let x=-50;box(x,.5,z,119,4.5,17,'#aeb4aa');gable(x,z,116,18,5,2,'#e5d4bd','#c47f61');for(let k=0;k<9;k++){let xx=-105+12*k;box(xx,1,z+10,4.7,3,.5,'#668e99');box(xx,2,z-10,4.2,1.4,.4,'#739ba2')}
+ for(let k=0;k<5;k++){box(-102+k*25,.35,z+15,4,3,7,'#b6b2a3');box(-102+k*25,.35,z-15,4,3,7,'#b6b2a3')}
+ box(-101,5.0,z,16,.8,19,'#b6a38a');box(-78,13,z,6,11,7,'#d8bc9c');box(-78,24,z,9,2.5,9,'#af725c');
+ // bridge walkway at deck height (plant building remains solid, playable river crossing via side walkway)
+ box(-51,4.9,52,122,.45,6,'#c9bfa7');for(let j=0;j<8;j++)box(-103+j*14,5.4,55,1.1,1.1,.45,'#c7c9b9');}
+function park(){const xc=256,zc=-262,base=terrain(xc,zc)+.2;box(xc,base,zc,110,.08,62,'#bd666a');box(xc,base+.08,zc,90,.09,49,'#719b68');for(let i=0;i<6;i++)box(xc-41+i*14,base+.20,zc,0.20,.02,46,'#d8e8d8');box(xc,base+.2,zc+27,90,.03,.2,'#e4ddd4');box(xc,base+.2,zc-27,90,.03,.2,'#e4ddd4');box(178,terrain(178,-250),-257,31,.2,18,'#5dbacc');box(178,terrain(178,-226),-225,27,.2,15,'#60b7c5');for(let k=0;k<5;k++)gable(305,-335+k*18,17,12,terrain(305,-335+k*18),1,'#d0d4c9','#737e77')}
+function gardens(){const x=-226,z=245;box(x,terrain(x,z),z,142,.12,98,'#96a66e');for(let i=0;i<9;i++)for(let j=0;j<6;j++){const xx=x-64+i*16,zz=z-42+j*17,yy=terrain(xx,zz);box(xx,yy+.02,zz,10,.06,12,(i+j)%3?'#6b8d5c':'#7b9055');for(let p=0;p<5;p++)box(xx-3+p*1.5,yy+.08,zz,0.35,.08,10,'#b1ba7c')}for(let i=0;i<7;i++)gable(-285+i*16,300,8,7,terrain(-285+i*16,300),1,'#c4ad88','#a67865')}
+function other(){bridge(28,110,176,3.4); // island to right bank
+bridge(-106,24,52,5.2); // accessible plant-side pedestrian crossing
+box(-233,terrain(-233,140),140,110,.12,5,'#aba89c');box(-224,terrain(-224,-230),-230,100,.1,5,'#aaa69b');
+// A handful of island paths and lookout
+for(let k=0;k<24;k++){let z=-161+k*14,x=islandCenter(z);box(x,2.28,z,3,.06,13,'#cbbb97')}
+for(const [x,z,label,kind] of [[-138,68,'Wasserkraftwerk','kraftwerk'],[12,-36,'Vogelinsel','insel'],[-226,241,'Schrebergärten','garten'],[260,-254,'Sportanlagen','sport'],[17,175,'Fussbrücke','bruecke']])hotspots.push({x,z,label,kind});}
+meshGround();river();sidePaths();plant();park();gardens();houses();other();trees();
+const baseStaticVertexCount=vertices.length/VERTEX_STRIDE;
+
+// R18: additional author-drawn sketch details; NOT reconstructed from Google Earth or official datasets.
+function worldDecor(){
+  // riverside walkways, individually bounded, and very sparse low-poly stones
+  for(let i=0;i<58;i++){
+    const z=-350+i*12.0, edge=flow(z)+half(z)+10, left=flow(z)-half(z)-11;
+    for(const x of [left,edge]){
+      if(Math.abs(x)<390 && !water(x,z)){
+        const v=terrain(x,z)+.08;
+        box(x,v,z,.6,.12,1.45,i%4===0?'#d1c6ae':'#aeb6a1');
+      }
+    }
+  }
+  // roadside striped kerb and modest reflectors; no extra collider on the avatar
+  for(let k=0;k<42;k++){
+    const z=-320+k*15.0,x=flow(z)+half(z)+35;
+    const y=terrain(x,z)+.08;
+    if(k%3===0)box(x,y,z,.16,.035,1.9,'#dfd6be');
+  }
+  // Road axis markings follow the same authored centreline as the existing roads.
+  for(let k=0;k<49;k++){
+    const z=-352+k*14.0;
+    for(const offset of [-34,35]){
+      let x=flow(z)+(offset<0?-half(z):half(z))+offset;
+      if(!Number.isFinite(x)||Math.abs(x)>370)continue;
+      box(x,terrain(x,z)+.11,z,.21,.022,3.5,'#ded7c1');
+    }
+  }
+  // garden small plots with blossoms; deterministic and batched in one draw call
+  for(let i=0;i<130;i++){
+    const x=-292+(i%13)*9.5,z=206+Math.floor(i/13)*7.8;
+    if(x<-380||x>380||z>375)continue;
+    const y=terrain(x,z)+.20;
+    box(x,y,z,.15,.36,.16,'#527d49');
+    box(x,y+.29,z,.30,.19,.32,['#d4b9af','#e3d49d','#ceb8d8','#bdcdac'][i%4]);
+  }
+  // Riverbank stones near island banks, sparse so outlines stay readable
+  for(let i=0;i<62;i++){
+    const z=-175+i*5.5,edge=islandWidth(z),side=i%2?-1:1;
+    if(edge<3)continue;
+    let x=islandCenter(z)+side*(edge-1.8),y=2.12;
+    box(x,y,z,1.15,.20,.85,i%3?'#b6bd9c':'#a4b39a');
+  }
+}
+worldDecor();
+const detailStaticVertexCount=vertices.length/VERTEX_STRIDE-baseStaticVertexCount;
+
+// Avatar is drawn as a dynamic mini-mesh on CPU (small budget) with a single draw call.
+// R19: conservative world-space chunk bounds. Keep triangles intact (no clipping) and
+// retain contiguous base and detail ranges for the single-draw aerial fallback.
+const CHUNK_METRES=180;
+function partitionStaticGeometry(raw,baseVertexCount){
+ const ranges=[{start:0,end:baseVertexCount*VERTEX_STRIDE,detail:false},
+               {start:baseVertexCount*VERTEX_STRIDE,end:raw.length,detail:true}];
+ const groups=[];
+ for(const range of ranges){
+  const buckets=new Map();
+  for(let i=range.start;i<range.end;i+=VERTEX_STRIDE*3){
+   const cx=(raw[i]+raw[i+9]+raw[i+18])/3,cz=(raw[i+2]+raw[i+11]+raw[i+20])/3;
+   const ix=Math.floor(cx/CHUNK_METRES),iz=Math.floor(cz/CHUNK_METRES),key=ix+','+iz;
+   let chunk=buckets.get(key);
+   if(!chunk){chunk={ix,iz,detail:range.detail,parts:[],min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};buckets.set(key,chunk)}
+   for(let j=i;j<i+27;j+=9){for(let k=0;k<3;k++){
+     chunk.min[k]=Math.min(chunk.min[k],raw[j+k]);
+     chunk.max[k]=Math.max(chunk.max[k],raw[j+k]);
+   }}
+   chunk.parts.push(i);
+  }
+  const sorted=[...buckets.values()].sort((a,b)=>a.iz-b.iz||a.ix-b.ix);
+  groups.push(...sorted);
+ }
+ const packed=new Float32Array(raw.length);let cursor=0;
+ const chunks=[];
+ for(const g of groups){const start=cursor/VERTEX_STRIDE;
+  for(const off of g.parts){for(let k=0;k<27;k++)packed[cursor++]=raw[off+k]}
+  const center=g.min.map((v,i)=>(v+g.max[i])/2);
+  const radius=Math.hypot(...center.map((v,i)=>g.max[i]-v));
+  chunks.push({start,count:cursor/VERTEX_STRIDE-start,detail:g.detail,center,radius,
+    min:g.min,max:g.max,ix:g.ix,iz:g.iz});
+ }
+ if(cursor!==raw.length||chunks.filter(c=>!c.detail).reduce((n,c)=>n+c.count,0)!==baseVertexCount)throw Error('Chunk coverage invalid');
+ return {packed,chunks};
+}
+const staticVertexCount=vertices.length/VERTEX_STRIDE;const staticTriangles=triangleTotal;
+const partition=partitionStaticGeometry(vertices,baseStaticVertexCount);
+const master=partition.packed,spatialChunks=partition.chunks;
+let cullDrawnVertices=0,cullCandidateVertices=0,cullVisibleChunks=0,cullDecision='AERIAL';
+// Clip-space plane extraction for the column-major projection × view matrix.
+function frustumPlanes(m){const rows=[
+ [m[0],m[4],m[8],m[12]], [m[1],m[5],m[9],m[13]],
+ [m[2],m[6],m[10],m[14]], [m[3],m[7],m[11],m[15]] ];
+ const planes=[];for(const axis of [0,1,2])for(const sign of [-1,1]){
+  let p=rows[3].map((v,k)=>v+sign*rows[axis][k]);const len=Math.hypot(p[0],p[1],p[2]);
+  if(len>1e-12)planes.push(p.map(v=>v/len));
+ }
+ return planes;
+}
+function sphereIntersects(planes,ch){for(const p of planes){if(p[0]*ch.center[0]+p[1]*ch.center[1]+p[2]*ch.center[2]+p[3]<-ch.radius-0.0001)return false}return true}
+// R22: conservative AABB support-vertex test; every vertex is inside min/max.
+// For inward-facing plane n·x+d>=0, maximum support < -epsilon means fully outside.
+// No geometry is removed from CPU master buffers; only visibility decisions change.
+let spatialBoundsMode='AABB';
+function aabbIntersects(planes,ch){
+  if(!ch||!Array.isArray(ch.min)||!Array.isArray(ch.max))return true; // fail visible
+  for(const p of planes){
+    const x=p[0]>=0?ch.max[0]:ch.min[0];
+    const y=p[1]>=0?ch.max[1]:ch.min[1];
+    const z=p[2]>=0?ch.max[2]:ch.min[2];
+    if(!Number.isFinite(x)||!Number.isFinite(y)||!Number.isFinite(z))return true;
+    if(p[0]*x+p[1]*y+p[2]*z+p[3]<-0.0001)return false;
+  }
+  return true;
+}
+function boundsIntersects(planes,ch){return spatialBoundsMode==='AABB'?aabbIntersects(planes,ch):sphereIntersects(planes,ch)}
+function selectSpatialDraws(cam){
+ const eligible=spatialChunks.filter(ch=>S.visualDetail||!ch.detail);
+ const total=eligible.reduce((v,ch)=>v+ch.count,0);
+ if(S.geoMode||S.mode==='drone')return {mode:'WHOLE',chunks:eligible,visible:eligible,vertices:total,eligible:total};
+ const planes=frustumPlanes(cam.mat),shown=eligible.filter(ch=>boundsIntersects(planes,ch));
+ const visible=shown.reduce((v,ch)=>v+ch.count,0);
+ // Adjacent visible chunks can share a drawArrays range even if their tiles differ.
+ // This keeps batching effective (particularly for long terrain/river strips).
+ const runs=[];for(const ch of shown){const prev=runs[runs.length-1];
+  if(prev&&prev.start+prev.count===ch.start){prev.count+=ch.count}
+  else runs.push({start:ch.start,count:ch.count});
+ }
+ // Dynamic hybrid: when most geometry is visible or submission count explodes,
+ // draw the original contiguous base/detail ranges. Culling cannot become a 100-call path.
+ if(visible>=total*.75||runs.length>16)return {mode:'WHOLE',chunks:eligible,visible:shown,vertices:total,eligible:total,runs};
+ return {mode:'CULL',chunks:eligible,visible:shown,vertices:visible,eligible:total,runs};
+}
+
+// R20: imported GeoScene gets its OWN conservative chunk index, built once at import.
+// Triangle centroids choose tile membership; AABB/sphere includes ALL three vertices.
+// Large spanning triangles stay conservative even if their centre is in a distant tile.
+const GEO_TILE_M=96;
+function partitionGeoGeometry(raw){
+ if(!(raw instanceof Float32Array)||raw.length%27!==0||raw.length>MAX_GEO_FLOATS)
+  throw Error('Geo-Chunk: ungültige Vertexdaten oder Speichergrenze');
+ const groups=new Map();
+ for(let off=0;off<raw.length;off+=27){
+  const cx=(raw[off]+raw[off+9]+raw[off+18])/3;
+  const cz=(raw[off+2]+raw[off+11]+raw[off+20])/3;
+  if(!Number.isFinite(cx)||!Number.isFinite(cz))throw Error('Geo-Chunk: ungültige Koordinaten');
+  const ix=Math.floor(cx/GEO_TILE_M),iz=Math.floor(cz/GEO_TILE_M),key=ix+','+iz;
+  let g=groups.get(key);
+  if(!g){g={ix,iz,parts:[],min:[Infinity,Infinity,Infinity],max:[-Infinity,-Infinity,-Infinity]};groups.set(key,g)}
+  for(let j=off;j<off+27;j+=9)for(let k=0;k<3;k++){
+   const v=raw[j+k];if(!Number.isFinite(v))throw Error('Geo-Chunk: NaN/Inf');
+   g.min[k]=Math.min(g.min[k],v);g.max[k]=Math.max(g.max[k],v);
+  }
+  g.parts.push(off);
+ }
+ const ordered=[...groups.values()].sort((a,b)=>a.iz-b.iz||a.ix-b.ix);
+ const packed=new Float32Array(raw.length),chunks=[];let cursor=0;
+ for(const g of ordered){
+  const start=cursor/VERTEX_STRIDE;
+  for(const off of g.parts){packed.set(raw.subarray(off,off+27),cursor);cursor+=27}
+  const center=g.min.map((v,k)=>(v+g.max[k])/2);
+  const radius=Math.hypot(...g.max.map((v,k)=>v-center[k]));
+  chunks.push({start,count:cursor/VERTEX_STRIDE-start,center,radius,min:g.min,max:g.max,ix:g.ix,iz:g.iz});
+ }
+ if(cursor!==packed.length||chunks.reduce((n,c)=>n+c.count,0)!==packed.length/VERTEX_STRIDE)
+  throw Error('Geo-Chunk: fehlende Dreiecke');
+ return {mesh:packed,chunks};
+}
+function selectGeoSpatialDraws(cam){
+ const total=geoStaticCount;
+ if(!geoSpatialChunks.length||!S.geoCulling||S.mode==='drone')
+  return {mode:'GEO_WHOLE',eligible:total,vertices:total,visible:geoSpatialChunks,runs:[]};
+ const planes=frustumPlanes(cam.mat);
+ const visible=geoSpatialChunks.filter(ch=>boundsIntersects(planes,ch));
+ const num=visible.reduce((n,ch)=>n+ch.count,0),runs=[];
+ for(const ch of visible){const last=runs[runs.length-1];
+  if(last&&last.start+last.count===ch.start)last.count+=ch.count;
+  else runs.push({start:ch.start,count:ch.count});}
+ if(num>=total*.75||runs.length>16)
+  return {mode:'GEO_WHOLE',eligible:total,vertices:total,visible,runs};
+ return {mode:'GEO_CULL',eligible:total,vertices:num,visible,runs};
+}
+function verifyGeoBounds(){let count=0,outside=0;
+ for(const ch of geoSpatialChunks)for(let i=ch.start*VERTEX_STRIDE;i<(ch.start+ch.count)*VERTEX_STRIDE;i+=VERTEX_STRIDE){
+  const d=Math.hypot(geoMaster[i]-ch.center[0],geoMaster[i+1]-ch.center[1],geoMaster[i+2]-ch.center[2]);
+  if(d>ch.radius+0.0001)outside++;count++;
+ }return {checked:count,outside};
+}
+let avatarBuffer=gl.createBuffer(),avatarN=0;
+const vShader=`attribute vec3 position;attribute vec3 normal;attribute vec3 color;uniform mat4 uVP;uniform vec3 uEye;uniform float uDay;varying float vMaterial;varying vec3 vWorld;varying vec3 vColor;varying float vFog;void main(){gl_Position=uVP*vec4(position,1.);vMaterial=step(2.,normal.y);vec3 n=normalize(vec3(normal.x,normal.y-4.*vMaterial,normal.z));vec3 sun=normalize(vec3(-0.4,0.9,0.55));float diffuse=max(0.,dot(n,sun));float vShade=(.56+.52*diffuse)*mix(.38,1.,uDay);vColor=color*vShade;vWorld=position;vFog=clamp((distance(position,uEye)-185.)/920.,0.,.49);}`;
+const fShader=`#ifdef GL_FRAGMENT_PRECISION_HIGH
+precision highp float;
+#else
+precision mediump float;
+#endif
+varying float vMaterial;varying vec3 vWorld;varying vec3 vColor;varying float vFog;uniform vec3 uFog;uniform vec3 uEye;uniform float uTime;uniform float uDetail;uniform float uDay;
+void main(){
+vec3 eyeDir=normalize(uEye-vWorld);vec3 sun=normalize(vec3(-.4,.9,.55));
+vec3 col=vColor;
+// A water-only specular/soft ripple model. Avoid per-pixel PBR cost on terrestrial surfaces.
+float isWater=step(.5,vMaterial);
+if(uDetail>.5 && isWater>.5){
+ float wave=sin(vWorld.x*.13+uTime*.54)*cos(vWorld.z*.085-uTime*.38);
+ float ripple=sin(vWorld.x*.27+vWorld.z*.14+uTime*.84);
+ vec3 wn=normalize(vec3(.025*wave,.999,.026*ripple));
+ float fres=pow(1.-max(dot(wn,eyeDir),0.),3.);
+ float glint=pow(max(dot(wn,normalize(sun+eyeDir)),0.),54.);
+ col=mix(col,vec3(.31,.49,.57)*max(.2,uDay),.08+.14*fres);
+ col+=vec3(.66,.74,.78)*glint*.065*uDay;
+ col+=vec3(.018,.025,.031)*(wave+ripple)*.16;
+}
+col=mix(col,uFog,vFog);
+col=pow(max(col,0.),vec3(.94));
+gl_FragColor=vec4(col,1.);
+}`;
+function shader(type,src){let o=gl.createShader(type);gl.shaderSource(o,src);gl.compileShader(o);if(!gl.getShaderParameter(o,gl.COMPILE_STATUS))throw Error(gl.getShaderInfoLog(o));return o}
+function initGPU(){program=gl.createProgram();gl.attachShader(program,shader(gl.VERTEX_SHADER,vShader));gl.attachShader(program,shader(gl.FRAGMENT_SHADER,fShader));gl.linkProgram(program);if(!gl.getProgramParameter(program,gl.LINK_STATUS))throw Error(gl.getProgramInfoLog(program));gl.useProgram(program);attr={position:gl.getAttribLocation(program,'position'),normal:gl.getAttribLocation(program,'normal'),color:gl.getAttribLocation(program,'color')};uni={vp:gl.getUniformLocation(program,'uVP'),eye:gl.getUniformLocation(program,'uEye'),day:gl.getUniformLocation(program,'uDay'),fog:gl.getUniformLocation(program,'uFog'),time:gl.getUniformLocation(program,'uTime'),detail:gl.getUniformLocation(program,'uDetail')};buffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,buffer);gl.bufferData(gl.ARRAY_BUFFER,master,gl.STATIC_DRAW);avatarBuffer=gl.createBuffer();if(geoMaster){geoBuffer=gl.createBuffer();gl.bindBuffer(gl.ARRAY_BUFFER,geoBuffer);gl.bufferData(gl.ARRAY_BUFFER,geoMaster,gl.STATIC_DRAW)}}
+initGPU();
+if(matchMedia('(pointer:coarse)').matches){S.quality=.7;$('quality').textContent='Sparmodus'}
+function persp(fov,ratio,near,far){const f=1/Math.tan(fov/2),a=1/(near-far);return [f/ratio,0,0,0,0,f,0,0,0,0,(far+near)*a,-1,0,0,2*far*near*a,0]}
+function lookAt(e,t){let z=[e[0]-t[0],e[1]-t[1],e[2]-t[2]];let len=Math.hypot(...z);z=z.map(i=>i/len);let x=[z[2],0,-z[0]];len=Math.hypot(...x)||1;x=x.map(i=>i/len);let y=[z[1]*x[2]-z[2]*x[1],z[2]*x[0]-z[0]*x[2],z[0]*x[1]-z[1]*x[0]];return [x[0],y[0],z[0],0,x[1],y[1],z[1],0,x[2],y[2],z[2],0,-(x[0]*e[0]+x[1]*e[1]+x[2]*e[2]),-(y[0]*e[0]+y[1]*e[1]+y[2]*e[2]),-(z[0]*e[0]+z[1]*e[1]+z[2]*e[2]),1]}
+function mul(A,B){let o=new Float32Array(16);for(let c=0;c<4;c++)for(let r=0;r<4;r++)o[c*4+r]=A[r]*B[c*4]+A[4+r]*B[c*4+1]+A[8+r]*B[c*4+2]+A[12+r]*B[c*4+3];return o}
+function perspectiveCam(){let p=S.p;let ey,tgt;if(S.mode==='drone'){tgt=S.droneTarget||[0,2,0];ey=[tgt[0]+Math.sin(S.orbit)*Math.sin(S.pitch)*S.zoom,tgt[1]+Math.cos(S.pitch)*S.zoom,tgt[2]+Math.cos(S.orbit)*Math.sin(S.pitch)*S.zoom]}else if(S.mode==='ego'){ey=[p[0],p[1]+1.72,p[2]];tgt=[p[0]+Math.sin(S.heading),p[1]+1.72+Math.tan(S.lookPitch||0),p[2]-Math.cos(S.heading)]}else{let offset=clamp(S.zoom,7,22);tgt=[p[0],p[1]+1.55,p[2]];ey=[p[0]-Math.sin(S.heading+S.orbit*.1)*offset,p[1]+3.8+Math.sin(S.pitch)*2.8,p[2]+Math.cos(S.heading+S.orbit*.1)*offset];for(let i=1;i<=16;i++){let tx=tgt[0]+(ey[0]-tgt[0])*i/16,tz=tgt[2]+(ey[2]-tgt[2])*i/16,ty=tgt[1]+(ey[1]-tgt[1])*i/16;if((Number.isFinite(ground(tx,tz))&&ty<ground(tx,tz)+.7)||(S.geoMode?geoCameraBlocks.some(b=>ty<b.top+.2&&(pointInRing(tx,tz,b.ring)||b.ring.some((a,i)=>distSeg(tx,tz,a,b.ring[(i+1)%b.ring.length])<.2))):solids.some(b=>Math.abs(tx-b.x)<b.w/2+.2&&Math.abs(tz-b.z)<b.d/2+.2))){let m=(i-1)/16;ey=[lerp(tgt[0],ey[0],m),lerp(tgt[1],ey[1],m),lerp(tgt[2],ey[2],m)];break}}}
+return {ey,tgt,mat:mul(persp((S.mode==='drone'?51:65)*PI/180,c.width/c.height,.1,1300),lookAt(ey,tgt))}}
+function avatarMesh(){if(S.mode==='ego'||S.mode==='drone')return null;const data=[];let p=S.p,h=S.heading;function vert(a,b,d,color){const n=hex(color);let xx=[b[0]-a[0],b[1]-a[1],b[2]-a[2]],yy=[d[0]-a[0],d[1]-a[1],d[2]-a[2]],nn=[xx[1]*yy[2]-xx[2]*yy[1],xx[2]*yy[0]-xx[0]*yy[2],xx[0]*yy[1]-xx[1]*yy[0]];let l=Math.hypot(...nn)||1;for(let v of [a,b,d])data.push(...v,...nn.map(t=>t/l),...n)}function bx(px,py,pz,w,height,d,col){let r=w/2,q=d/2,top=py+height;let a=[px-r,py,pz-q],b=[px+r,py,pz-q],cc=[px+r,py,pz+q],dd=[px-r,py,pz+q],e=[px-r,top,pz-q],f=[px+r,top,pz-q],g=[px+r,top,pz+q],hh=[px-r,top,pz+q];for(let [v1,v2,v3,v4] of [[a,b,f,e],[b,cc,g,f],[cc,dd,hh,g],[dd,a,e,hh],[e,f,g,hh]]){vert(v1,v2,v3,col);vert(v1,v3,v4,col)}}let y=p[1],walk=Math.sin(S.time*12)*Math.min(1,Math.hypot(...(S.velocity||[0,0]))/4)*.22;bx(p[0],y+.67,p[2],.78,.90,.52,'#234c55');bx(p[0],y+1.49,p[2],.61,.56,.56,'#e9cba3');bx(p[0]-.28,y+.08+Math.max(0,walk),p[2],.23,.62,.34,'#4c6574');bx(p[0]+.28,y+.08+Math.max(0,-walk),p[2],.23,.62,.34,'#4c6574');bx(p[0]-.53,y+.72,p[2],.22,.66,.27,'#b2d5c1');bx(p[0]+.53,y+.72,p[2],.22,.66,.27,'#b2d5c1');bx(p[0],y+1.90,p[2],.65,.16,.60,'#395e68');return new Float32Array(data)}
+function resize(){const w=Math.max(2,Math.round(innerWidth*Math.min(1.25,devicePixelRatio||1)*S.quality)),h=Math.max(2,Math.round(innerHeight*Math.min(1.25,devicePixelRatio||1)*S.quality));const cap=Math.sqrt(1200000/(w*h));c.width=Math.max(2,Math.floor(w*Math.min(1,cap)));c.height=Math.max(2,Math.floor(h*Math.min(1,cap)))}addEventListener('resize',resize);resize();
+// Gamepad nach W3C-Standard-Mapping (Regeln wie Wasserwelt v4.10, R47/R48): nur mapping==='standard'; radiale Totzone 18 %; Tasten wirken nur auf der Flanke und nie auf den Stand beim ersten Sehen (primed); schreibt Bewegung nur, wenn der Stick ausgelenkt ist, und nimmt nur zurueck, was es selbst gesetzt hat, damit Touch und Tastatur daneben ungestoert bleiben. getGamepads kann per Permissions Policy werfen und liefert vor der ersten Eingabe eine leere Liste; beides gilt als kein Gamepad. Keine Geraete-ID wird gelesen oder gespeichert.
+const gpad={index:null,primed:false,prev:[],move:false,look:false,run:false,told:false};
+function gpadNeutral(){if(gpad.move){S.joy=[0,0];gpad.move=false}if(gpad.look){S.lookJoy=[0,0];gpad.look=false}gpad.run=false}
+function gpadForget(){gpadNeutral();gpad.index=null;gpad.primed=false;gpad.prev=[]}
+function gpadStick(x,y){const m=Math.hypot(x,y);if(!(m>.18))return[0,0];const v=Math.min(1,(m-.18)/.82);return[x/m*v,y/m*v]}
+function readGamepad(){if(!document.hasFocus()){gpadForget();return}let list;try{list=navigator.getGamepads?.()||[]}catch(_){list=[]}
+ const c=Array.from(list),slot=c.findIndex(g=>g&&g.connected===true&&g.mapping==='standard'&&Array.isArray(g.axes)&&Array.isArray(g.buttons));
+ if(slot<0){gpadForget();return}
+ const gp=c[slot],index=Number.isInteger(gp.index)&&gp.index>=0?gp.index:slot;if(gpad.index!==index){gpadForget();gpad.index=index}
+ if(!gpad.told){gpad.told=true;$('instruction').textContent='Gamepad: linker Stick gehen · rechter Stick schauen · LB rennen · Y Ansicht · X Karte · A erkunden'}
+ const axis=i=>{const q=gp.axes[i];return typeof q==='number'&&Number.isFinite(q)?clamp(q,-1,1):0};
+ const now=[0,1,2,3,4,9].map(i=>gp.buttons[i]?.pressed===true),before=gpad.prev,edge=i=>now[i]&&!before[i];gpad.prev=now;const firstSeen=!gpad.primed;gpad.primed=true;if(firstSeen)return;
+ if(!S.started){gpadNeutral();if((edge(0)||edge(5))&&!S.started)$('start').click();return}
+ if(edge(0))inspectNearest();
+ if(edge(1))closePanels();
+ if(edge(2))$('toggleMap').click();
+ if(edge(3)){const o=['ego','follow','drone'];setMode(o[(o.indexOf(S.mode)+1)%3])}
+ const[mx,my]=gpadStick(axis(0),axis(1)),[lx,ly]=gpadStick(axis(2),axis(3));
+ if(mx||my){S.joy=[mx,my];gpad.move=true}else if(gpad.move){S.joy=[0,0];gpad.move=false}
+ if(lx||ly){S.lookJoy=[lx,-ly];gpad.look=true}else if(gpad.look){S.lookJoy=[0,0];gpad.look=false}
+ gpad.run=now[4];
+}
+let last=0,dtSum=0,dtN=0,accumulator=0;const FIXED=1/60;function render(now){requestAnimationFrame(render);if(document.hidden||lost){last=0;accumulator=0;return}let elapsed=last?Math.max(0,(now-last)/1000):FIXED;last=now;readGamepad();if(!S.started){accumulator=0;return}accumulator+=Math.min(elapsed,.12);for(let steps=0;accumulator>=FIXED&&steps<7;steps++,accumulator-=FIXED){S.time+=FIXED;update(FIXED)}if(accumulator>=FIXED)accumulator=0;const camera=perspectiveCam();const dusk=[[.69,.79,.80],[.81,.77,.67],[.28,.36,.47]][S.day];gl.viewport(0,0,c.width,c.height);gl.clearColor(...dusk,1);gl.clear(gl.COLOR_BUFFER_BIT|gl.DEPTH_BUFFER_BIT);gl.enable(gl.DEPTH_TEST);gl.disable(gl.BLEND);gl.disable(gl.CULL_FACE);gl.useProgram(program);gl.uniformMatrix4fv(uni.vp,false,camera.mat);gl.uniform3fv(uni.eye,camera.ey);gl.uniform1f(uni.day,[1,.74,.35][S.day]);gl.uniform3fv(uni.fog,dusk);gl.uniform1f(uni.time,S.time);gl.uniform1f(uni.detail,S.visualDetail);gl.bindBuffer(gl.ARRAY_BUFFER,S.geoMode&&geoBuffer?geoBuffer:buffer);for(let [key,index] of Object.entries(attr)){gl.enableVertexAttribArray(index);gl.vertexAttribPointer(index,3,gl.FLOAT,false,36,key==='position'?0:key==='normal'?12:24)}let choice=S.geoMode?null:selectSpatialDraws(camera);drawCount=0;
+if(S.geoMode){const selected=selectGeoSpatialDraws(camera);
+ if(selected.mode==='GEO_CULL'){
+  for(const run of selected.runs){gl.drawArrays(gl.TRIANGLES,run.start,run.count);drawCount++}
+ }else if(geoStaticCount){gl.drawArrays(gl.TRIANGLES,0,geoStaticCount);drawCount++}
+ cullDrawnVertices=selected.vertices;cullCandidateVertices=selected.eligible;
+ cullVisibleChunks=selected.visible.length;cullDecision=selected.mode;
+}
+
+else if(choice.mode==='WHOLE'){
+ gl.drawArrays(gl.TRIANGLES,0,baseStaticVertexCount);drawCount=1;
+ if(S.visualDetail&&detailStaticVertexCount>0){gl.drawArrays(gl.TRIANGLES,baseStaticVertexCount,detailStaticVertexCount);drawCount++}
+ cullDrawnVertices=choice.vertices;cullCandidateVertices=choice.eligible;cullVisibleChunks=choice.visible.length;cullDecision='WHOLE';
+}else{
+ // Each chunk owns a contiguous range within the same VBO: no CPU mesh rebuild per frame.
+ for(const run of choice.runs){gl.drawArrays(gl.TRIANGLES,run.start,run.count);drawCount++}
+ cullDrawnVertices=choice.vertices;cullCandidateVertices=choice.eligible;cullVisibleChunks=choice.visible.length;cullDecision='CULL';
+}let ch=avatarMesh();if(ch){gl.bindBuffer(gl.ARRAY_BUFFER,avatarBuffer);gl.bufferData(gl.ARRAY_BUFFER,ch,gl.DYNAMIC_DRAW);for(let [key,index] of Object.entries(attr))gl.vertexAttribPointer(index,3,gl.FLOAT,false,36,key==='position'?0:key==='normal'?12:24);gl.drawArrays(gl.TRIANGLES,0,ch.length/VERTEX_STRIDE);drawCount++}
+S.frame++;dtSum+=elapsed;dtN++;if(S.frame%60===0){$('fps').textContent=dtSum>0?Math.round(dtN/dtSum)+' FPS':'— FPS';dtSum=0;dtN=0}if(S.frame%10===0){$('pos').textContent=`X ${S.p[0].toFixed(0)} · Z ${S.p[2].toFixed(0)} · ${S.mode.toUpperCase()}`;if(S.showMap)drawMap();if(!document.getElementById('geoPosPane').hidden)updateGeoPosition();if(S.showPerf)$('perfDetails').textContent=`Draw calls ${drawCount} · Dreiecke ${(cullDrawnVertices/3)+((ch?.length||0)/27)} · Culling ${cullDecision} · Sichtbar ${cullVisibleChunks}/${S.geoMode?geoSpatialChunks.length:spatialChunks.length} · Buffer ${((S.geoMode?geoMaster:master).byteLength/1024/1024).toFixed(1)} MB · ${c.width}×${c.height} px · Δ ${(elapsed>0?1/elapsed:0).toFixed(0)} FPS (RAF, gemessen)`}}
+function update(dt){if(S.started && (S.lookJoy[0]||S.lookJoy[1])){if(S.mode==='ego'){S.heading+=S.lookJoy[0]*2.0*dt;S.lookPitch=clamp((S.lookPitch||0)+S.lookJoy[1]*1.3*dt,-.8,.8)}else{S.orbit+=S.lookJoy[0]*2.0*dt;S.pitch=clamp(S.pitch-S.lookJoy[1]*1.2*dt,.12,1.39)}}if(S.mode==='drone'){let dx=S.joy[0],dz=S.joy[1];if(S.keys.has('KeyW')||S.keys.has('ArrowUp'))dz=-1;if(S.keys.has('KeyS')||S.keys.has('ArrowDown'))dz=1;if(S.keys.has('KeyA')||S.keys.has('ArrowLeft'))dx=-1;if(S.keys.has('KeyD')||S.keys.has('ArrowRight'))dx=1;if(dx||dz){let speed=(S.keys.has('ShiftLeft')?150:95)*dt,ang=S.orbit;S.droneTarget[0]+= (dx*Math.cos(ang)+dz*Math.sin(ang))*speed;S.droneTarget[2]+=(dz*Math.cos(ang)-dx*Math.sin(ang))*speed;S.droneTarget[0]=clamp(S.droneTarget[0],-310,310);S.droneTarget[2]=clamp(S.droneTarget[2],-310,310)}return}
+ let f=(S.keys.has('KeyW')||S.keys.has('ArrowUp')?1:0)-(S.keys.has('KeyS')||S.keys.has('ArrowDown')?1:0)-S.joy[1],side=(S.keys.has('KeyD')||S.keys.has('ArrowRight')?1:0)-(S.keys.has('KeyA')||S.keys.has('ArrowLeft')?1:0)+S.joy[0];let len=Math.hypot(f,side);S.velocity=[0,0];if(len>.08){let speed=(S.keys.has('ShiftLeft')||gpad.run?12:6.5)*dt,dx=(Math.sin(S.heading)*f+Math.cos(S.heading)*side)/len*speed,dz=(-Math.cos(S.heading)*f+Math.sin(S.heading)*side)/len*speed;let x=S.p[0],z=S.p[2],steps=Math.max(1,Math.ceil(Math.hypot(dx,dz)/.35));for(let j=0;j<steps;j++){let xx=dx/steps,zz=dz/steps;if(walkable(x+xx,z+zz)){x+=xx;z+=zz}else if(walkable(x+xx,z)){x+=xx}else if(walkable(x,z+zz)){z+=zz}}S.velocity=[(x-S.p[0])/dt,(z-S.p[2])/dt];S.p[0]=x;S.p[2]=z;S.p[1]=lerp(S.p[1],ground(S.p[0],S.p[2]),Math.min(1,dt*9));}
+}
+function setMode(mode){S.mode=mode;if(mode==='drone'){S.droneTarget=[0,2,0];S.zoom=clamp(S.zoom,160,650)}else{S.zoom=mode==='follow'?12:S.zoom}for(let v of ['ego','follow','drone'])$(v).classList.toggle('active',v===mode);$('instruction').textContent=mode==='drone'?'WASD: Kamera verschieben · Ziehen: drehen · Rad: zoomen':mode==='ego'?'WASD: gehen · Maus: drehen · Shift: laufen':'WASD: Nigin bewegen · Ziehen: schauen · Shift: laufen';advanceTour('camera');}
+function visit(kind){if(S.geoMode)toggleGeo(false);if(!['kraftwerk','insel','garten','sport','bruecke'].includes(kind))return;S.undoState={p:[...S.p],target:[...(S.droneTarget||[0,2,0])],mode:S.mode,zoom:S.zoom};$('undo').disabled=false;const p={kraftwerk:[-144,0,92],insel:[9,2.45,-26],garten:[-227,0,199],sport:[214,0,-265],bruecke:[74,0,176]};if(!p[kind])return;S.p=[...p[kind]];S.p[1]=ground(S.p[0],S.p[2]);S.droneTarget=[S.p[0],1,S.p[2]];if(S.mode==='drone'){S.zoom=190}for(let h of hotspots){if(h.kind===kind){$('siteTitle').textContent=h.label;$('siteDesc').textContent=({kraftwerk:'Kraftwerksriegel und Wehr zwischen Ufer und Insel. Lage und Form bisher nur angenähert.',insel:'Langer, begrünter Inselkörper zwischen Wasserarmen; begehbarer Erkundungsbereich.',garten:'Kleingartenstruktur am Ufer mit Parzellen und Wegen.',sport:'Sportfelder, Laufbahn und Schwimmbecken auf der Gegenseite.',bruecke:'Fussgängerverbindung als schematische 3D-Geometrie.'})[kind]}}drawMap();advanceTour('place')}
+
+// v0.9: guided discovery without analytics, profile, localStorage, cookies, or network.
+const TOUR=[
+ {event:'camera',title:'1/3 · Ansicht wechseln',detail:'Wähle oben «Nigin» oder «Ego», um die Perspektive zu wechseln.'},
+ {event:'place',title:'2/3 · Einen Ort besuchen',detail:'Öffne «Orte» und wähle beispielsweise die Vogelinsel.'},
+ {event:'demo',title:'3/3 · Daten verstehen',detail:'Öffne «Orte» und wähle «Testszene». Sie enthält nur synthetische Objekte.'}
+];
+function showTour(){let card=$('tourCard');card.hidden=!S.tourActive;if(!S.tourActive)return;let step=TOUR[S.tourStep];$('tourTitle').textContent=step.title;$('tourDetail').textContent=step.detail;}
+function startTour(){S.tourActive=true;S.tourStep=0;closePanels();showTour()}
+function advanceTour(event){if(!S.tourActive||TOUR[S.tourStep]?.event!==event)return;S.tourStep++;if(S.tourStep>=TOUR.length){S.tourActive=false;$('siteTitle').textContent='Einführung abgeschlossen';$('siteDesc').textContent='Du kannst die Tour über «Menü» jederzeit erneut öffnen.';}showTour()}
+function undoVisit(){let u=S.undoState;if(!u)return false;if(S.geoMode)toggleGeo(false);S.p=[...u.p];S.droneTarget=[...u.target];setMode(u.mode);S.zoom=u.zoom;S.undoState=null;$('undo').disabled=true;$('siteTitle').textContent='Ortswechsel rückgängig';$('siteDesc').textContent='Vorige Spielfigurposition und Kamera wiederhergestellt.';drawMap();return true}
+$('tourHelp').onclick=startTour;$('tourSkip').onclick=()=>{S.tourActive=false;showTour()};$('undo').onclick=undoVisit;
+$('start').onclick=()=>{$('welcome').hidden=true;S.started=true;S.droneTarget=[0,0,0];setMode('drone');closePanels();startTour()};for(let id of ['ego','follow','drone'])$(id).onclick=()=>setMode(id);for(let b of document.querySelectorAll('[data-mode]'))b.addEventListener('click',()=>setMode(b.dataset.mode));$('toggleMap').onclick=()=>{if(S.showMap&&$('settingsPane').hidden){togglePanel('settingsPane','settingsToggle');drawMap();return}S.showMap=!S.showMap;$('mapPane').hidden=!S.showMap;if(S.showMap){if($('settingsPane').hidden)togglePanel('settingsPane','settingsToggle');drawMap()}};$('togglePerf').onclick=()=>{S.showPerf=!S.showPerf;$('perfPane').hidden=!S.showPerf};$('day').onclick=()=>{S.day=(S.day+1)%3;$('day').textContent=['Tag','Abend','Nacht'][S.day]};$('visualDetail').onclick=()=>{S.visualDetail=1-S.visualDetail;$('visualDetail').textContent=S.visualDetail?'Details: Hoch':'Details: Sparen';$('visualDetail').setAttribute('aria-pressed',String(!!S.visualDetail))};$('quality').onclick=()=>{S.quality=S.quality===1?.7:S.quality===.7?1:1.25;$('quality').textContent=S.quality===.7?'Sparmodus':S.quality===1?'Normal':'Hoch';resize()};$('reset').onclick=()=>{visit('kraftwerk');setMode('follow')};for(let button of document.querySelectorAll('[data-visit]'))button.addEventListener('click',()=>{visit(button.dataset.visit);closePanels()});
+window.addEventListener('keydown',e=>{if(['ArrowDown','ArrowUp','ArrowLeft','ArrowRight','Space'].includes(e.code))e.preventDefault();if(['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))return;S.keys.add(e.code);if(e.repeat)return;if(e.code==='Digit1')setMode('ego');if(e.code==='Digit2')setMode('follow');if(e.code==='Digit3')setMode('drone');if(e.code==='KeyM')$('toggleMap').click();if(e.code==='KeyP')$('togglePerf').click();if(e.code==='KeyE')inspectNearest();if(e.code==='KeyU')undoVisit();if(e.code==='KeyH'&&S.started)startTour();if(e.code==='KeyG')showTerrainInfo()});window.addEventListener('keyup',e=>S.keys.delete(e.code));window.addEventListener('blur',()=>{S.keys.clear();S.joy=[0,0]});
+const touches=new Map();let pinchLast=0;
+c.addEventListener('pointerdown',e=>{touches.set(e.pointerId,[e.clientX,e.clientY]);S.pointer=true;S.lastX=e.clientX;S.lastY=e.clientY;c.setPointerCapture(e.pointerId);if(touches.size===2){const t=[...touches.values()];pinchLast=Math.hypot(t[0][0]-t[1][0],t[0][1]-t[1][1])}});
+function pointerEnd(e){touches.delete(e.pointerId);S.pointer=touches.size>0;if(touches.size<2)pinchLast=0}
+c.addEventListener('pointerup',pointerEnd);c.addEventListener('pointercancel',pointerEnd);
+c.addEventListener('pointermove',e=>{if(!touches.has(e.pointerId))return;const previous=touches.get(e.pointerId);touches.set(e.pointerId,[e.clientX,e.clientY]);if(touches.size===2){let t=[...touches.values()],dist=Math.hypot(t[0][0]-t[1][0],t[0][1]-t[1][1]);if(pinchLast>0&&dist>5)S.zoom=clamp(S.zoom*pinchLast/dist,S.mode==='drone'?75:6,S.mode==='drone'?740:23);pinchLast=dist;return}
+ const dx=e.clientX-previous[0],dy=e.clientY-previous[1];if(S.mode==='drone'||S.mode==='follow'){S.orbit+=dx*.006;S.pitch=clamp(S.pitch+dy*.004,.12,1.39)}else{S.heading+=dx*.006;S.lookPitch=clamp((S.lookPitch||0)-dy*.004,-.8,.8)}});
+c.addEventListener('wheel',e=>{e.preventDefault();S.zoom=clamp(S.zoom*Math.exp(e.deltaY*.0015),S.mode==='drone'?75:6,S.mode==='drone'?740:23)},{passive:false});
+const joy=$('joystick'),knob=$('knob'),lookJoy=$('lookJoystick'),lookKnob=$('lookKnob');
+function attachPad(el,thumb,which){let active=null;const radius=39;function value(e){const r=el.getBoundingClientRect(),cx=r.left+r.width/2,cy=r.top+r.height/2;let x=(e.clientX-cx)/(r.width*.35),y=(e.clientY-cy)/(r.height*.35);const n=Math.max(1,Math.hypot(x,y));x/=n;y/=n;if(which==='move')S.joy=[x,y];else S.lookJoy=[x,-y];thumb.style.transform=`translate(${x*radius}px,${y*radius}px)`}function stop(e){if(active!==e.pointerId)return;active=null;if(which==='move')S.joy=[0,0];else S.lookJoy=[0,0];thumb.style.transform='translate(0,0)'}el.addEventListener('pointerdown',e=>{if(active!==null||!S.started)return;active=e.pointerId;el.setPointerCapture?.(e.pointerId);value(e);e.preventDefault()});el.addEventListener('pointermove',e=>{if(active===e.pointerId)value(e)});for(const t of ['pointerup','pointercancel','lostpointercapture'])el.addEventListener(t,stop);return ()=>{active=null;if(which==='move')S.joy=[0,0];else S.lookJoy=[0,0];thumb.style.transform='translate(0,0)'}}
+const resetMovePad=attachPad(joy,knob,'move'),resetLookPad=attachPad(lookJoy,lookKnob,'look');
+function closePanels(){for(const [id,btn] of [['sites','sitesToggle'],['settingsPane','settingsToggle']]){$(id).hidden=true;$(btn).setAttribute('aria-expanded','false')}}
+function togglePanel(id,btn){const opening=$(id).hidden;closePanels();$(id).hidden=!opening;$(btn).setAttribute('aria-expanded',String(opening));if(opening)$(btn).focus()}
+$('sitesToggle').onclick=()=>togglePanel('sites','sitesToggle');$('settingsToggle').onclick=()=>togglePanel('settingsPane','settingsToggle');$('closeSites').onclick=closePanels;$('closeSettings').onclick=closePanels;
+function showTerrainInfo(){const t=geoData?.terrain;$('siteTitle').textContent=t?'Geländeinformation':'Kein Höhenmodell geladen';$('siteDesc').textContent=t?`Höhe an Nigin: ${(t.height_origin_m+geoAltitude(S.p[0],S.p[2])).toFixed(1)} m (${t.vertical_datum}); lokal relativ ${(geoAltitude(S.p[0],S.p[2])).toFixed(1)} m. Herkunft: vom Benutzer zu prüfen.`:'Skizzenwelt oder GeoScene ohne DEM. Für Höhenmesh eine GeoScene v2 importieren.';}
+$('terrainInfo').onclick=showTerrainInfo;
+function currentGeoPosition(){
+ if(!S.geoMode||!geoData)return null;
+ const e=geoData.origin_e+S.p[0],n=geoData.origin_n-S.p[2];
+ const t=geoData.terrain;
+ const altitude=t? t.height_origin_m+geoAltitude(S.p[0],S.p[2]) : null;
+ return {easting:e,northing:n,altitude_m:Number.isFinite(altitude)?altitude:null,vertical_datum:t?.vertical_datum||null,source_verified:false};
+}
+function updateGeoPosition(){
+ let p=currentGeoPosition();$('geoPosText').textContent=p
+ ? `LV95 E ${p.easting.toFixed(2)} m · N ${p.northing.toFixed(2)} m`+
+    (p.altitude_m===null?' · Höhe unbekannt':` · Höhe ${p.altitude_m.toFixed(2)} m (${p.vertical_datum})`)+
+    ' · ungeprüfte Datenherkunft'
+ : 'Nur in der importierten Geodatenansicht; keine GPS-Erfassung.';
+ return p;
+}
+$('geoPosition').onclick=()=>{
+ const panel=$('geoPosPane');panel.hidden=!panel.hidden;
+ $('geoPosition').setAttribute('aria-expanded',String(!panel.hidden));updateGeoPosition();
+};
+
+$('privacyBtn').onclick=()=>{$('privacyText').hidden=!$('privacyText').hidden;$('privacyBtn').setAttribute('aria-expanded',String(!$('privacyText').hidden))};
+$('clearSession').onclick=()=>location.reload();
+function inspectNearest(){if(S.geoMode){$('siteTitle').textContent='Geodatenansicht';$('siteDesc').textContent='Der Import zeigt Geometrie. Interaktive Orte sind nur in der Skizzenwelt verfügbar.';return false}let nearest=null,d=23;for(const h of hotspots){const v=Math.hypot(S.p[0]-h.x,S.p[2]-h.z);if(v<d){nearest=h;d=v}}if(nearest){$('siteTitle').textContent='Entdeckt: '+nearest.label;$('siteDesc').textContent='Lokaler Erkundungspunkt in der frei modellierten Skizzenwelt. Keine echte Geoposition.';return true}togglePanel('sites','sitesToggle');return false}
+$('mobileInteract').onclick=inspectNearest;
+window.addEventListener('blur',()=>{gpadForget();resetMovePad();resetLookPad();S.keys.clear()});document.addEventListener('visibilitychange',()=>{gpadForget();if(document.hidden){resetMovePad();resetLookPad();S.keys.clear();touches.clear();pinchLast=0}});
+window.addEventListener('keydown',e=>{if(e.code==='Escape')closePanels()});
+function drawMap(){if(S.geoMode){drawGeoMap();return}const canvas=$('map'),ctx=canvas.getContext('2d');const W=230;ctx.clearRect(0,0,W,W);ctx.fillStyle='#668766';ctx.fillRect(0,0,W,W);const f=(x,z)=>[(x+405)*W/810,(z+405)*W/810];ctx.beginPath();for(let z=-400;z<=400;z+=8){let a=f(flow(z)-half(z),z);z===-400?ctx.moveTo(...a):ctx.lineTo(...a)}for(let z=400;z>=-400;z-=8)ctx.lineTo(...f(flow(z)+half(z),z));ctx.closePath();ctx.fillStyle='#477f9b';ctx.fill();ctx.beginPath();for(let z=-195;z<=195;z+=8){let a=f(islandCenter(z)-islandWidth(z),z);z===-195?ctx.moveTo(...a):ctx.lineTo(...a)}for(let z=195;z>=-195;z-=8)ctx.lineTo(...f(islandCenter(z)+islandWidth(z),z));ctx.closePath();ctx.fillStyle='#a4b882';ctx.fill();for(let h of hotspots){let v=f(h.x,h.z);ctx.fillStyle='#f5d0a6';ctx.beginPath();ctx.arc(...v,3.7,0,TAU);ctx.fill()}const a=f(S.p[0],S.p[2]);ctx.beginPath();ctx.arc(...a,5.5,0,TAU);ctx.fillStyle='#082b36';ctx.fill();ctx.beginPath();ctx.arc(...a,3.3,0,TAU);ctx.fillStyle='#e5fff8';ctx.fill();}
+
+function snapshot(){return {kind:'nigin-aareworld',version:1,player:{x:S.p[0],z:S.p[2],heading:S.heading},camera:{mode:S.mode,orbit:S.orbit,pitch:S.pitch,zoom:S.zoom,lookPitch:S.lookPitch||0,target:S.droneTarget||[0,0,0]},world:{day:S.day,quality:S.quality}}}
+function validateSave(a){if(!a||a.kind!=='nigin-aareworld'||a.version!==1||typeof a!=='object')throw Error('Ungültiges Dateiformat.');const keysOK=(o,k)=>!!o&&typeof o==='object'&&!Array.isArray(o)&&Object.keys(o).length===k.length&&k.every(x=>Object.prototype.hasOwnProperty.call(o,x));if(!keysOK(a,['kind','version','player','camera','world'])||!keysOK(a.player,['x','z','heading'])||!keysOK(a.camera,['mode','orbit','pitch','zoom','lookPitch','target'])||!keysOK(a.world,['day','quality']))throw Error('Unerwartete oder fehlende Felder im Spielstand.');const p=a.player||{},cam=a.camera||{},w=a.world||{};const finite=(v,min,max)=>typeof v==='number'&&Number.isFinite(v)&&v>=min&&v<=max;if(!finite(p.x,-395,395)||!finite(p.z,-375,375)||!finite(p.heading,-100000,100000)||!walkable(p.x,p.z))throw Error('Spielerposition ausserhalb des begehbaren Geländes.');if(!['ego','follow','drone'].includes(cam.mode)||!finite(cam.orbit,-100000,100000)||!finite(cam.pitch,.12,1.39)||!finite(cam.zoom,6,740)||!finite(cam.lookPitch,-.8,.8)||!Array.isArray(cam.target)||cam.target.length!==3||!cam.target.every(v=>finite(v,-500,500)))throw Error('Ungültige Kameradaten.');if(!Number.isInteger(w.day)||w.day<0||w.day>2||![.7,1,1.25].includes(w.quality))throw Error('Ungültige Welteinstellungen.');return a}
+function applySave(a){let wasGeo=S.geoMode;S.geoMode=false;try{validateSave(a)}catch(e){S.geoMode=wasGeo;throw e}if(wasGeo)toggleGeo(false);S.p=[a.player.x,ground(a.player.x,a.player.z),a.player.z];S.heading=a.player.heading;S.orbit=a.camera.orbit;S.pitch=a.camera.pitch;S.zoom=a.camera.zoom;S.lookPitch=a.camera.lookPitch;S.droneTarget=[...a.camera.target];S.day=a.world.day;S.quality=a.world.quality;resize();$('day').textContent=['Tag','Abend','Nacht'][S.day];$('quality').textContent=S.quality===.7?'Sparmodus':S.quality===1?'Normal':'Hoch';setMode(a.camera.mode);S.zoom=a.camera.zoom;$('siteTitle').textContent='Spielstand geladen';$('siteDesc').textContent='Position, Kameramodus und Tageszeit wurden aus der lokalen Datei wiederhergestellt.';}
+$('save').addEventListener('click',()=>{if(S.geoMode){$('siteTitle').textContent='Geodatenmodus';$('siteDesc').textContent='Spielstände können nur in der Skizzenwelt exportiert werden. Importierte Geodaten werden nicht im Spielstand gespeichert.';return;}const data=JSON.stringify(snapshot(),null,2),blob=new Blob([data],{type:'application/json'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='nigin_aareworld_v1_save.json';document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)});
+$('load').addEventListener('click',()=>$('loadFile').click());$('loadFile').addEventListener('change',async e=>{const f=e.target.files?.[0];e.target.value='';if(!f)return;try{if(f.size>32768)throw Error('Datei zu gross.');applySave(JSON.parse(await f.text()))}catch(err){$('siteTitle').textContent='Import abgelehnt';$('siteDesc').textContent=err.message}});
+
+
+// OFFLINE GEO-DATA MODE — self-contained LV95 importer. Untested datasets are clearly labelled.
+// Only EPSG:2056 documents converted with tools/prepare_lv95.py, no Google Earth data.
+function pointInRing(x,z,r){let inside=false;for(let i=0,j=r.length-1;i<r.length;j=i++){let a=r[i],b=r[j];if((a[1]>z)!==(b[1]>z)&&x<(b[0]-a[0])*(z-a[1])/(b[1]-a[1])+a[0])inside=!inside}return inside}
+function distSeg(x,z,a,b){let dx=b[0]-a[0],dz=b[1]-a[1],t=clamp(((x-a[0])*dx+(z-a[1])*dz)/(dx*dx+dz*dz||1),0,1);return Math.hypot(x-a[0]-dx*t,z-a[1]-dz*t)}
+function geoWalkable(x,z){if(!Number.isFinite(x)||!Number.isFinite(z)||Math.abs(x)>375||Math.abs(z)>375||!geoSlopeOK(x,z)|| (geoData?.terrain && ![geoAltitude(x-.72,z),geoAltitude(x+.72,z),geoAltitude(x,z-.72),geoAltitude(x,z+.72)].every(Number.isFinite)))return false;for(let b of geoBlocks){if(pointInRing(x,z,b)||b.some((a,i)=>distSeg(x,z,a,b[(i+1)%b.length])<.65))return false}return true}
+function normRing(r){let p=r.slice();if(p.length>2&&p[0][0]===p[p.length-1][0]&&p[0][1]===p[p.length-1][1])p=p.slice(0,-1);return p}
+function cross2(a,b,c){return (b[0]-a[0])*(c[1]-a[1])-(b[1]-a[1])*(c[0]-a[0])}
+// CodeFactory GEOM-GUARD v1: reject non-adjacent touching/overlapping edges,
+// zero-length edges and immediate edge backtracking. Fail-closed on degeneracy.
+function onSegment(a,b,p){
+ const eps=1e-8;
+ return Math.abs(cross2(a,b,p))<=eps &&
+   p[0]>=Math.min(a[0],b[0])-eps && p[0]<=Math.max(a[0],b[0])+eps &&
+   p[1]>=Math.min(a[1],b[1])-eps && p[1]<=Math.max(a[1],b[1])+eps;
+}
+function segIntersect(a,b,c,d){
+ const p=cross2(a,b,c),q=cross2(a,b,d),r=cross2(c,d,a),s=cross2(c,d,b),eps=1e-8;
+ if((p>eps&&q< -eps||p< -eps&&q>eps)&&(r>eps&&s< -eps||r< -eps&&s>eps))return true;
+ return (Math.abs(p)<=eps&&onSegment(a,b,c))||
+        (Math.abs(q)<=eps&&onSegment(a,b,d))||
+        (Math.abs(r)<=eps&&onSegment(c,d,a))||
+        (Math.abs(s)<=eps&&onSegment(c,d,b));
+}
+function simplePoly(r){
+ if(!Array.isArray(r)||r.length<3||r.length>320)return false;
+ for(let i=0;i<r.length;i++){
+  const a=r[(i+r.length-1)%r.length],b=r[i],c=r[(i+1)%r.length];
+  const u=[a[0]-b[0],a[1]-b[1]],v=[c[0]-b[0],c[1]-b[1]];
+  if(u[0]*u[0]+u[1]*u[1]<1e-14||v[0]*v[0]+v[1]*v[1]<1e-14)return false;
+  if(Math.abs(cross2(a,b,c))<1e-8 && u[0]*v[0]+u[1]*v[1]>0)return false;
+ }
+ for(let i=0;i<r.length;i++)for(let j=i+1;j<r.length;j++){
+  if(((i+1)%r.length)===j||((j+1)%r.length)===i)continue;
+  if(segIntersect(r[i],r[(i+1)%r.length],r[j],r[(j+1)%r.length]))return false;
+ }
+ return true;
+}
+function earTriangles(r){const area=r.reduce((s,a,i)=>s+a[0]*r[(i+1)%r.length][1]-r[(i+1)%r.length][0]*a[1],0);if(Math.abs(area)<.001)throw Error('Entartetes Polygon');let ids=Array.from({length:r.length},(_,i)=>i),result=[],sign=area>0?1:-1,limit=r.length*r.length;while(ids.length>3&&limit-->0){let ear=false;for(let k=0;k<ids.length;k++){let i=ids[(k+ids.length-1)%ids.length],j=ids[k],h=ids[(k+1)%ids.length],a=r[i],b=r[j],c=r[h];if(cross2(a,b,c)*sign<=1e-7)continue;let valid=true;for(let n of ids){if(n===i||n===j||n===h)continue;let p=r[n],ca=cross2(a,b,p)*sign,cb=cross2(b,c,p)*sign,cc=cross2(c,a,p)*sign;if(ca>=-1e-7&&cb>=-1e-7&&cc>=-1e-7){valid=false;break}}if(valid){result.push([i,j,h]);ids.splice(k,1);ear=true;break}}if(!ear)break}if(ids.length!==3)throw Error('Polygon-Triangulation nicht möglich');result.push([...ids]);return result}
+function classify(props){let k=String(props.class||props.type||'').toLowerCase();if(/building|geb|haus|bati/.test(k))return 'building';if(/water|gew|river|see|aare|fluss/.test(k))return 'water';if(/street|road|strass|weg|path|foot|track/.test(k))return 'road';if(/forest|wald|wood|veget|park/.test(k))return 'park';return 'other'}
+function validateGeo(g){if(!g||g.format!=='nigin-geoscene-lv95'||![1,2].includes(g.version)||g.input_crs!=='EPSG:2056'||!Array.isArray(g.features))throw Error('Erwartet Nigin LV95-GeoScene v1 (EPSG:2056)');if(g.features.length>500)throw Error('Zu viele Geo-Objekte (maximal 500)');if(g.version===2){validateDEM(g.terrain)}else if('terrain' in g)throw Error('Geländeraster erfordert Szene v2');if(!Number.isFinite(g.origin_e)||!Number.isFinite(g.origin_n)||g.origin_e<2400000||g.origin_e>2900000||g.origin_n<1000000||g.origin_n>1400000)throw Error('LV95-Nullpunkt ungültig');let count=0;function chk(p){if(!Array.isArray(p)||p.length!==2||p.some(v=>typeof v!=='number'||!Number.isFinite(v)||Math.abs(v)>380))throw Error('Koordinate liegt ausserhalb der 760-m-Szenengrenze');if(g.version===2&&![sampleDEM(g.terrain,p[0]-2.6,p[1]-2.6),sampleDEM(g.terrain,p[0]+2.6,p[1]+2.6)].every(Number.isFinite))throw Error('Geometrie oder Linienbreite ausserhalb der DEM-Abdeckung; keine Randextrapolation');if(++count>6000)throw Error('Zu viele Stützpunkte (max 6000)')}for(let f of g.features){
+ // Semantic geometry contract: a building/park is an area, not a stroke or marker.
+ // Failing the whole import is safer than rendering a misleading line/point.
+ const semantic=classify(f?.properties||{}),isArea=['Polygon','MultiPolygon'].includes(f?.type),isLine=['LineString','MultiLineString'].includes(f?.type);
+ if((semantic==='building'||semantic==='park')&&!isArea)throw Error('Geo-Objektklasse '+semantic+' erfordert Polygonfläche');
+ if(semantic==='water'&&!isArea&&!isLine)throw Error('Wasserobjekt erfordert Linie oder Polygon');
+ let hp=f?.properties?.height_m;if(hp!==undefined&&(!Number.isFinite(hp)||typeof hp!=='number'||hp<2||hp>80))throw Error('Gebäudehöhe muss zwischen 2 und 80 m liegen');if(hp!==undefined&&classify(f.properties)!=='building')throw Error('Höhenangaben nur bei Gebäuden');let wl=f?.properties?.water_level_m;
+if(wl!==undefined){
+ if(classify(f.properties)!=='water'||!['Polygon','MultiPolygon'].includes(f.type)||g.version!==2||g.terrain.vertical_datum==='UNKNOWN'||f.properties.water_level_datum!==g.terrain.vertical_datum||typeof wl!=='number'||!Number.isFinite(wl)||wl<0||wl>6000)throw Error('Wasserstand: Polygon, DEM und passendes Vertikaldatum erforderlich');
+ if(Math.abs(wl-g.terrain.height_origin_m)>400)throw Error('Wasserstand: Höhenursprung unplausibel');
+}if(!f||!f.coordinates||!['Point','LineString','MultiLineString','Polygon','MultiPolygon'].includes(f.type))throw Error('Geo-Objekt nicht unterstützt');let c=f.coordinates;if(f.type==='Point')chk(c);if(f.type==='LineString'||f.type==='MultiLineString'){let lines=f.type==='LineString'?[c]:c;if(!Array.isArray(lines))throw Error('Linienformat ungültig');for(let line of lines){if(!Array.isArray(line)||line.length<2||line.length>1000)throw Error('Linie ungültig');line.forEach(chk)}}if(f.type==='Polygon'||f.type==='MultiPolygon'){let polys=f.type==='Polygon'?[c]:c;if(!Array.isArray(polys))throw Error('Polygonformat ungültig');for(let poly of polys){if(!Array.isArray(poly)||poly.length!==1)throw Error('Polygone mit Löchern werden noch nicht unterstützt – Import verweigert');let r=normRing(poly[0]);if(!simplePoly(r))throw Error('Polygon ungültig, zu komplex oder selbstschneidend');r.forEach(chk);earTriangles(r)}}}return g}
+function geoLine(line,width,color,material=M_LAND){meshMaterial=material;for(let i=1;i<line.length;i++){let a=line[i-1],b=line[i],dx=b[0]-a[0],dz=b[1]-a[1],m=Math.hypot(dx,dz);if(m<.001)continue;let steps=Math.max(1,Math.ceil(m/6));let ox=dz/m*width*.5,oz=-dx/m*width*.5;for(let k=0;k<steps;k++){let u=k/steps,v=(k+1)/steps;let p=[lerp(a[0],b[0],u),lerp(a[1],b[1],u)],q=[lerp(a[0],b[0],v),lerp(a[1],b[1],v)];let va=[p[0]+ox,p[1]+oz],vb=[p[0]-ox,p[1]-oz],vc=[q[0]-ox,q[1]-oz],vd=[q[0]+ox,q[1]+oz];quad([va[0],geoAltitude(...va)+.21,va[1]],[vb[0],geoAltitude(...vb)+.21,vb[1]],[vc[0],geoAltitude(...vc)+.21,vc[1]],[vd[0],geoAltitude(...vd)+.21,vd[1]],color)}}meshMaterial=M_LAND;}
+function geoPolygon(r,category,props={}){
+ meshMaterial=category==='water'?M_WATER:M_LAND;
+ const isBuilding=category==='building';let hasHeight=isBuilding&&typeof props.height_m==='number';let h=isBuilding?(hasHeight?props.height_m:.22):0;
+ let roof=isBuilding?Math.max(...r.map(p=>geoAltitude(...p)))+h:0;
+ let color=isBuilding?(hasHeight?'#b8a38e':'#967f69'):category==='water'?'#398eaa':category==='park'?'#528e62':'#b3af91';let measuredWater=category==='water'&&typeof props.water_level_m==='number'&&pendingDEM;
+ const fixedWaterY=measuredWater?props.water_level_m-pendingDEM.height_origin_m+.055:null;
+ for(const [ia,ib,ic] of earTriangles(r)){
+   const A=r[ia],B=r[ib],C=r[ic];
+   if(isBuilding||!pendingDEM){const y=p=>isBuilding?roof:measuredWater?fixedWaterY:geoAltitude(...p)+.17;triangle([A[0],y(A),A[1]],[B[0],y(B),B[1]],[C[0],y(C),C[1]],color);continue;}
+   let maxSide=Math.max(Math.hypot(A[0]-B[0],A[1]-B[1]),Math.hypot(B[0]-C[0],B[1]-C[1]),Math.hypot(C[0]-A[0],C[1]-A[1]));
+   const n=clamp(Math.ceil(maxSide/6),1,24),step=1/n;
+   function lerpPoint(i,j){const u=i*step,v=j*step,x=A[0]+u*(B[0]-A[0])+v*(C[0]-A[0]),z=A[1]+u*(B[1]-A[1])+v*(C[1]-A[1]);return [x,measuredWater?fixedWaterY:geoAltitude(x,z)+.26,z]}
+   for(let i=0;i<n;i++)for(let j=0;j<n-i;j++){
+     let a=lerpPoint(i,j),b=lerpPoint(i+1,j),c=lerpPoint(i,j+1);triangle(a,b,c,color);
+     if(i+j<n-1){let d=lerpPoint(i+1,j+1);triangle(b,d,c,color)}
+   }
+ }
+ meshMaterial=M_LAND;
+ if(isBuilding){geoBlocks.push(r);geoCameraBlocks.push({ring:r,top:roof});for(let i=0;i<r.length;i++){let a=r[i],b=r[(i+1)%r.length];quad([a[0],geoAltitude(...a)+.04,a[1]],[b[0],geoAltitude(...b)+.04,b[1]],[b[0],roof,b[1]],[a[0],roof,a[1]],'#d9cdb7')}}
+ else if(category==='water')geoBlocks.push(r);
+}
+function drawTerrainDEM(t){
+ const stride=t.visual_stride||1;
+ for(let j=0;j<t.height-1;j+=stride)for(let i=0;i<t.width-1;i+=stride){
+  let ix=Math.min(t.width-1,i+stride),jz=Math.min(t.height-1,j+stride);
+  let x=t.min_x+i*t.spacing_m,z=t.min_z+j*t.spacing_m,x2=t.min_x+ix*t.spacing_m,z2=t.min_z+jz*t.spacing_m;
+  let a=geoAltitude(x,z),b=geoAltitude(x2,z),c=geoAltitude(x2,z2),d=geoAltitude(x,z2);
+  let slope=Math.max(Math.abs(a-b),Math.abs(a-d),Math.abs(b-c),Math.abs(c-d))/Math.min(x2-x,z2-z);
+  let color=slope>.43?'#8e9477':slope>.22?'#809b74':(i+j)%11===0?'#7a9a72':'#77966f';
+  quad([x,a,z],[x2,b,z],[x2,c,z2],[x,d,z2],color)
+ }
+}
+function buildGeo(g){validateGeo(g);let original=vertices,oldBlocks=geoBlocks,oldCam=geoCameraBlocks,oldPendingDEM=pendingDEM,oldTriangleTotal=triangleTotal;pendingDEM=g.version===2?g.terrain:null;geoBuildActive=true;vertices=[];let features=0,lines=0,polygons=0,points=0;try{if(pendingDEM){drawTerrainDEM(pendingDEM)}else{quad([-390,-.12,-390],[390,-.12,-390],[390,-.12,390],[-390,-.12,390],'#627f6a');for(let i=-350;i<=350;i+=50){box(i,-.10,0,.23,.025,760,'#829a81');box(0,-.10,i,760,.025,.23,'#829a81')}}
+let blocks=[],cameraBlocks=[];geoBlocks=blocks;geoCameraBlocks=cameraBlocks;for(let f of g.features){let category=classify(f.properties||{}),color=category==='water'?'#388ba7':category==='road'?'#d0bda1':category==='park'?'#5f8e62':'#d6d0b1';if(f.type==='Point'){box(f.coordinates[0],0,f.coordinates[1],2.1,7,2.1,color);points++}else if(f.type==='LineString'||f.type==='MultiLineString'){for(let line of f.type==='LineString'?[f.coordinates]:f.coordinates){geoLine(line,category==='water'?4.5:category==='road'?3.5:1.6,color,category==='water'?M_WATER:M_LAND);lines++}}else {for(let poly of f.type==='Polygon'?[f.coordinates]:f.coordinates){geoPolygon(normRing(poly[0]),category,f.properties||{});polygons++}}features++;if(vertices.length>1800000)throw Error('Geo-Mesh überschreitet das GPU-Speicherbudget')}return {mesh:new Float32Array(vertices),blocks,cameraBlocks,stats:{features,lines,polygons,points,triangles:vertices.length/27}}}finally{vertices=original;geoBlocks=oldBlocks;geoCameraBlocks=oldCam;pendingDEM=oldPendingDEM;geoBuildActive=false;meshMaterial=M_LAND;triangleTotal=oldTriangleTotal}}
+function findGeoSpawn(blocks){const clear=(x,z)=>Math.abs(x)<385&&Math.abs(z)<385&&!blocks.some(b=>pointInRing(x,z,b)||b.some((a,i)=>distSeg(x,z,a,b[(i+1)%b.length])<.8));if(clear(0,0)&&geoSlopeOK(0,0))return [0,geoAltitude(0,0),0];for(let radius=8;radius<=360;radius+=8){for(let k=0;k<32;k++){let ang=k*TAU/32,x=Math.cos(ang)*radius,z=Math.sin(ang)*radius;if(clear(x,z)&&geoSlopeOK(x,z))return [x,geoAltitude(x,z),z]}}throw Error('Keine begehbare Startposition in der Geodatenkachel')}
+function geoStatusSummary(g){
+ if(!g)return 'Keine Geodaten importiert. Die Skizzenwelt besitzt keine geografische Vermessungsgrundlage.';
+ const fmt=v=>typeof v==='number'&&Number.isFinite(v)?v.toFixed(2):'—';
+ const terrain=g.version===2&&g.terrain?g.terrain:null;
+ const rawHash=typeof g.source_sha256==='string'&&/^[a-fA-F0-9]{64}$/.test(g.source_sha256)?g.source_sha256:'nicht angegeben';
+ const demHash=typeof g.terrain_source?.sha256==='string'&&/^[a-fA-F0-9]{64}$/.test(g.terrain_source.sha256)?g.terrain_source.sha256:'nicht angegeben';
+ return ['Status: IMPORTDATEI / HERKUNFT UNVERIFIZIERT',
+ 'Format '+String(g.format)+' v'+g.version+' · Koordinatensystem '+String(g.input_crs),
+ 'Lokaler LV95-Ursprung E '+fmt(g.origin_e)+' / N '+fmt(g.origin_n),
+ 'Objekte: '+g.features.length+' · Quell-Layer: '+(Array.isArray(g.source_layers)?g.source_layers.length:'nicht angegeben'),
+ 'Höhenraster: '+(terrain?terrain.width+'×'+terrain.height+' · '+terrain.vertical_datum+' · Höhe '+fmt(terrain.height_origin_m)+' m':'nicht enthalten'),
+ 'Vektor-Quelldatei SHA-256 (nur Deklaration): '+rawHash,
+ 'DEM SHA-256 (nur Deklaration): '+demHash,
+ 'Attribution (ungeprüft): '+(typeof g.attribution==='string'?g.attribution.slice(0,180):'fehlt'),
+ 'Achtung: ein Hash belegt nur die Bytes, keine Datenqualität, Lizenz oder Echtheit.'
+ ].join('\n');
+}
+function refreshGeoStatus(){const t=$('geoAuditText');if(t)t.textContent=geoStatusSummary(geoData)}
+function toggleGeo(enabled){if(enabled&& !geoMaster)return;if(enabled===S.geoMode)return;if(enabled){S.sketchP=[...S.p];S.p=[...S.geoP];S.geoMode=true;S.droneTarget=[0,1,0];setMode('drone');S.zoom=350}else{S.geoP=[...S.p];S.geoMode=false;S.p=S.sketchP||[-149,ground(-149,88),88];S.droneTarget=[0,2,0];setMode('drone');S.zoom=460}$('geoToggle').textContent=enabled?'Zur Skizzenwelt':'Geodatenansicht';$('siteTitle').textContent=enabled?'Separater Geodatenmodus':'Synthetische Aarewelt';$('siteDesc').textContent=enabled?'Importierte LV95-Geometrie, als unabhängige Datenansicht. Datenherkunft muss separat geprüft werden. Keine Überlagerung mit der erfundenen Landschaft.':'Zurück in der frei modellierten, geografisch nicht korrekten Skizzenwelt.';drawMap()}
+function installGeo(g){const built=buildGeo(g);const partitioned=partitionGeoGeometry(built.mesh);const previousGeoData=geoData;geoData=g;let spawn;try{spawn=findGeoSpawn(built.blocks)}finally{geoData=previousGeoData}let next=gl.createBuffer();if(!next)throw Error('Kein GPU-Puffer verfügbar');try{gl.bindBuffer(gl.ARRAY_BUFFER,next);gl.bufferData(gl.ARRAY_BUFFER,partitioned.mesh,gl.STATIC_DRAW);if(gl.getError()!==gl.NO_ERROR)throw Error('GPU konnte die Geometrie nicht laden')}catch(e){gl.deleteBuffer(next);throw e}
+let old=geoBuffer;geoBuffer=next;geoMaster=partitioned.mesh;geoSpatialChunks=partitioned.chunks;geoBlocks=built.blocks;geoCameraBlocks=built.cameraBlocks;geoStats=built.stats;geoData=g;geoStaticCount=geoMaster.length/VERTEX_STRIDE;S.geoScene={origin_e:g.origin_e,origin_n:g.origin_n,stats:geoStats};S.geoP=spawn;
+if(S.geoMode){S.p=[...(S.sketchP||[-149,0,88])];S.geoMode=false}toggleGeo(true);if(old)gl.deleteBuffer(old);$('siteDesc').textContent=`${geoStats.features} LV95-Objekte · ${geoStats.polygons} Flächen · ${geoStats.lines} Linien · ${geoStats.points} Punkte. Quelle durch die Anwendung nicht verifiziert. ${g.version===2?`Gelände: ${g.terrain.width}×${g.terrain.height} Mess-/Rasterpunkte; Grafik-LOD ${g.terrain.visual_stride||1}; Höhenbezug ${g.terrain.height_origin_m.toFixed(1)} m (${g.terrain.vertical_datum}).`:"Kein Höhenmodell."}`;$('geoCredit').textContent=typeof g.attribution==='string'?'Importangabe (ungeprüft): '+g.attribution.slice(0,160):'Herkunft: nicht nachgewiesen. Keine vermessene Spielwelt behauptet.';refreshGeoStatus()}
+
+// Explicit, reversible within the session: visual mesh only. DEM sampling/collision stays full fidelity.
+function optimizeTerrain(){
+ if(!geoData||!geoData.terrain){$('siteTitle').textContent='Kein DEM geladen';$('siteDesc').textContent='Bitte zuerst eine vorbereitete GeoScene v2 importieren.';return null}
+ let original=geoData.terrain,choices=[4,2,1],stride=choices.find(k=>terrainLODerror(original,k)<=.25+1e-9);
+ if(!stride)stride=1;
+ const current=original.visual_stride||1;
+ if(stride===current){$('siteTitle').textContent='Geländegrafik bereits optimiert';$('siteDesc').textContent=`LOD ${stride} bei unveränderter Kollisionsauflösung.`;return {stride,changed:false}}
+ let next=JSON.parse(JSON.stringify(geoData));next.terrain.visual_stride=stride;
+ if(stride>1)next.terrain.visual_max_error_m=terrainLODerror(next.terrain,stride)+.000001;
+ else delete next.terrain.visual_max_error_m;
+ const last=[...S.p],wasGeo=S.geoMode;
+ installGeo(next);
+ if(wasGeo&&geoWalkable(last[0],last[2]))S.p=[last[0],ground(last[0],last[2]),last[2]];
+ const error=terrainLODerror(next.terrain,stride);
+ $('siteTitle').textContent='Gelände-Grafik optimiert';
+ $('siteDesc').textContent=`LOD ${stride} · höchste kontrollierte Rasterpunktabweichung ${error.toFixed(3)} m · Physik-Höhen unverändert. Nur im Arbeitsspeicher.`;
+ return {stride,error,changed:true};
+}
+$('optimizeTerrain').onclick=()=>{try{optimizeTerrain()}catch(e){$('siteTitle').textContent='Optimierung nicht durchgeführt';$('siteDesc').textContent=e.message}}
+function drawGeoMap(){let canvas=$('map'),ctx=canvas.getContext('2d'),W=230;ctx.clearRect(0,0,W,W);ctx.fillStyle='#69876c';ctx.fillRect(0,0,W,W);if(geoData?.terrain){let t=geoData.terrain;for(let j=0;j<t.height-1;j++)for(let i=0;i<t.width-1;i++){let h=t.heights[j*t.width+i];ctx.fillStyle=h>5?'#7a976e':h< -5?'#537e71':'#71956d';ctx.fillRect((t.min_x+i*t.spacing_m+390)*W/780,(t.min_z+j*t.spacing_m+390)*W/780,Math.ceil(t.spacing_m*W/780)+1,Math.ceil(t.spacing_m*W/780)+1)}}const proj=a=>[(a[0]+390)*W/780,(a[1]+390)*W/780];if(geoData)for(let f of geoData.features){let cat=classify(f.properties||{});ctx.strokeStyle=cat==='water'?'#307eac':cat==='road'?'#e6c49d':'#b7d9a6';ctx.fillStyle=cat==='building'?'#b3a392':cat==='water'?'#397fa1':'#659b70';ctx.lineWidth=cat==='road'?2.6:1.2;let parts=f.type==='LineString'?[f.coordinates]:f.type==='MultiLineString'?f.coordinates:f.type==='Polygon'?[f.coordinates[0]]:f.type==='MultiPolygon'?f.coordinates.map(p=>p[0]):[];if(f.type==='Point'){let t=proj(f.coordinates);ctx.fillRect(t[0]-2,t[1]-2,4,4)}for(let pts of parts){if(!pts.length)continue;ctx.beginPath();ctx.moveTo(...proj(pts[0]));for(let i=1;i<pts.length;i++)ctx.lineTo(...proj(pts[i]));if(f.type.includes('Polygon')){ctx.closePath();ctx.fill()}ctx.stroke()}}let v=proj([S.p[0],S.p[2]]);ctx.fillStyle='#eafffb';ctx.strokeStyle='#17333d';ctx.lineWidth=2;ctx.beginPath();ctx.arc(v[0],v[1],5,0,TAU);ctx.fill();ctx.stroke();ctx.fillStyle='#143b36';ctx.font='11px system-ui';ctx.fillText('LV95 · lokal / ±390 m',7,17)}
+function geoFixture(){return {format:'nigin-geoscene-lv95',version:1,input_crs:'EPSG:2056',origin_e:2645073,origin_n:1249506,features:[{type:'Polygon',coordinates:[[[30,30],[90,30],[90,65],[30,65],[30,30]]],properties:{class:'building',height_m:12}},{type:'Polygon',coordinates:[[[-100,-65],[-65,-65],[-65,85],[-100,85],[-100,-65]]],properties:{class:'water'}},{type:'LineString',coordinates:[[-170,-100],[-100,-10],[-10,60],[190,120]],properties:{class:'road'}},{type:'Point',coordinates:[-130,90],properties:{class:'landmark'}}]}}
+$('geoDemo').onclick=()=>{try{installGeo(geoFixture());advanceTour('demo');$('siteTitle').textContent='Synthetische Geo-Testszene';$('siteDesc').textContent='Nur Testobjekte mit LV95-Schemakoordinaten – keine vermessene Aarau-Geometrie.';closePanels()}catch(e){$('siteTitle').textContent='Geo-Test fehlgeschlagen';$('siteDesc').textContent=e.message}};
+$('geoImport').onclick=()=>$('geoFile').click();$('geoFile').addEventListener('change',async e=>{let f=e.target.files?.[0];e.target.value='';if(!f)return;try{if(f.size>1500000)throw Error('Maximal 1,5 MB Geo-Datei');let g=JSON.parse(await f.text());installGeo(g);$('siteTitle').textContent=g.version===2?'Gelände und Geodaten geladen':'Geo-Datei geladen';closePanels()}catch(err){$('siteTitle').textContent='Geo-Import verweigert';$('siteDesc').textContent=String(err.message)}});
+$('geoCulling').onclick=()=>{S.geoCulling=!S.geoCulling;$('geoCulling').textContent=S.geoCulling?'Geo-Culling: An':'Geo-Culling: Aus';$('geoCulling').setAttribute('aria-pressed',String(S.geoCulling));};
+$('geoAudit').onclick=()=>{const pane=$('geoAuditPane'),open=pane.hidden;pane.hidden=!open;$('geoAudit').setAttribute('aria-expanded',String(open));if(open)refreshGeoStatus()};
+$('geoToggle').onclick=()=>{if(!geoMaster){$('siteTitle').textContent='Noch keine Geometrie';$('siteDesc').textContent='Geo-Testszene wählen oder vorbereitete LV95-JSON-Datei importieren.';return}toggleGeo(!S.geoMode)};
+
+let lost=false;c.addEventListener('webglcontextlost',e=>{e.preventDefault();lost=true;$('error').hidden=false;$('error').querySelector('p').textContent='Grafikkontext verloren. Wiederherstellung wird abgewartet.'});c.addEventListener('webglcontextrestored',()=>{try{initGPU();lost=false;$('error').hidden=true;resize()}catch(e){$('error').querySelector('p').textContent='WebGL-Wiederherstellung fehlgeschlagen. Bitte neu starten.'}});
+requestAnimationFrame(render);
+if (window.__NIGIN_QA_MODE__==='LOCAL_TEST_ONLY') window.__NIGIN_SPATIAL__={
+ getBoundMode:()=>spatialBoundsMode,
+ setBoundMode:(v)=>{if(v!=='AABB'&&v!=='SPHERE')throw Error('Expected AABB or SPHERE');spatialBoundsMode=v;return v},
+ testBounds:(planes,ch)=>({aabb:aabbIntersects(planes,ch),sphere:sphereIntersects(planes,ch)}),
+ getStats:()=>({chunkCount:spatialChunks.length,baseCount:baseStaticVertexCount,detailCount:detailStaticVertexCount,
+  candidateVertices:cullCandidateVertices,drawnVertices:cullDrawnVertices,visibleChunks:cullVisibleChunks,
+  mode:cullDecision,drawCalls:drawCount,bufferBytes:master.byteLength}),
+ evaluate:()=>{const cam=perspectiveCam(),choice=selectSpatialDraws(cam);return {mode:choice.mode,eligible:choice.eligible,visibleVertices:choice.visible.reduce((a,c)=>a+c.count,0),drawnVertices:choice.vertices,visibleChunks:choice.visible.length,runs:choice.runs?.length||0}},
+ getChunkBounds:()=>spatialChunks.map(({start,count,center,radius,detail})=>({start,count,center,radius,detail})),
+ verifyChunkSpheres:()=>{let out=0,maxOutside=-Infinity,checked=0;for(const ch of spatialChunks){
+  for(let i=ch.start*VERTEX_STRIDE;i<(ch.start+ch.count)*VERTEX_STRIDE;i+=VERTEX_STRIDE){
+   let d=Math.hypot(master[i]-ch.center[0],master[i+1]-ch.center[1],master[i+2]-ch.center[2]);
+   maxOutside=Math.max(maxOutside,d-ch.radius);if(d>ch.radius+0.0001)out++;checked++;
+  }}return {checked,outside:out,maxOutside};
+ },
+ camera:()=>perspectiveCam(),
+ geoEvaluate:()=>selectGeoSpatialDraws(perspectiveCam()),
+ getGeoChunkBounds:()=>geoSpatialChunks.map(({start,count,center,radius,min,max})=>({start,count,center,radius,min,max})),
+ geoBoundsCheck:()=>verifyGeoBounds(),
+ geoBufferBytes:()=>geoMaster?.byteLength||0
+};
+if (window.__NIGIN_QA_MODE__==='LOCAL_TEST_ONLY') window.__AARE_TEST={resetMovePad,resetLookPad,closePanels,S,walkable,water,ground,flow,half,islandWidth,inIsland,hotspots,triangleTotal,getTriangleCounter:()=>triangleTotal,staticVertexCount,baseStaticVertexCount,detailStaticVertexCount,getRenderedStaticVertices:()=>S.geoMode?geoStaticCount:S.visualDetail?staticVertexCount:baseStaticVertexCount,materialStats:()=>{const data=S.geoMode?geoMaster:master;let land=0,water=0;for(let i=4;i<data.length;i+=VERTEX_STRIDE){if(data[i]>2)water++;else land++;}return {land,water,stride:VERTEX_STRIDE,mode:S.geoMode?'geo':'sketch'};},visit,setMode,getGL:()=>gl,getLost:()=>lost,snapshot,validateSave,applySave,validateGeo,buildGeo,installGeo,toggleGeo,geoFixture,geoWalkable,findGeoSpawn,undoVisit,startTour,advanceTour,getGeoStats:()=>geoStats,getGeoData:()=>geoData,getGeoCameraBlocks:()=>geoCameraBlocks,validateDEM,terrainLODerror,optimizeTerrain,sampleDEM,geoAltitude,geoSlopeOK,currentGeoPosition,updateGeoPosition,geoStatusSummary,refreshGeoStatus};
+// R23: Tap-to-toggle equivalent to drag joysticks. Single pointer, no holding or gesture required.
+function installTapControls(adapter){
+ const root=document.createElement('div');root.id='niginTapControls';root.className='nigin-tap-controls';
+ const launch=document.createElement('button');launch.id='tapControlsToggle';launch.type='button';launch.textContent='Tipp-Steuerung';launch.setAttribute('aria-expanded','false');launch.setAttribute('aria-controls','tapControlsPanel');
+ const panel=document.createElement('section');panel.id='tapControlsPanel';panel.hidden=true;panel.setAttribute('aria-label','Bewegen und umsehen durch einzelne Tippaktionen');
+ const heading=document.createElement('strong');heading.textContent='Einmal tippen: starten · nochmals: stoppen';panel.appendChild(heading);
+ const toolbar=document.createElement('div');toolbar.className='nigin-tap-grid';panel.appendChild(toolbar);
+ const move=[['Vorwärts','KeyW'],['Rückwärts','KeyS'],['Links gehen','KeyA'],['Rechts gehen','KeyD']];
+ const look=[['Links schauen',-1,0],['Rechts schauen',1,0],['Hoch schauen',0,1],['Runter schauen',0,-1]];
+ let m=null,l=null;
+ const keys=adapter.keys;
+ const buttons=[];
+ function sync(){for(const b of buttons){let active=b.dataset.key?m===b.dataset.key:l===Number(b.dataset.look);b.setAttribute('aria-pressed',String(Boolean(active)));}}
+ function stop(){if(m)keys.delete(m);m=null;l=null;adapter.setLook(0,0);sync()}
+ function moveClick(k){if(!adapter.active())return;if(m===k){keys.delete(m);m=null;}else{if(m)keys.delete(m);m=k;keys.add(k)}sync()}
+ function lookClick(i){if(!adapter.active())return;l=l===i?null:i;const v=l===null?[0,0]:look[l].slice(1);adapter.setLook(...v);sync()}
+ for(const [label,key] of move){const b=document.createElement('button');b.type='button';b.dataset.key=key;b.textContent=label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>moveClick(key));toolbar.appendChild(b);buttons.push(b)}
+ look.forEach(([label],i)=>{const b=document.createElement('button');b.type='button';b.dataset.look=String(i);b.textContent=label;b.setAttribute('aria-pressed','false');b.addEventListener('click',()=>lookClick(i));toolbar.appendChild(b);buttons.push(b)});
+ const stopButton=document.createElement('button');stopButton.type='button';stopButton.id='tapControlsStop';stopButton.textContent='Halt';stopButton.addEventListener('click',stop);toolbar.appendChild(stopButton);
+ const act=document.createElement('button');act.type='button';act.id='tapControlsAction';act.textContent='Aktion';act.addEventListener('click',()=>{if(adapter.active())adapter.action()});toolbar.appendChild(act);
+ for(const [label,dir] of [['Näher',-1],['Weiter',1]]){const z=document.createElement('button');z.type='button';z.textContent=label;z.className='tapZoom';z.addEventListener('click',()=>{if(adapter.active())adapter.zoom(dir)});toolbar.appendChild(z)}
+ const note=document.createElement('p');note.textContent='Ohne Wischbewegung und ohne zweiten Finger. Auch per Tastatur erreichbar.';panel.appendChild(note);
+ launch.addEventListener('click',()=>{panel.hidden=!panel.hidden;document.body.classList.toggle('nigin-tap-mode',!panel.hidden);launch.setAttribute('aria-expanded',String(!panel.hidden));if(panel.hidden)stop();else stopButton.focus()});
+ root.appendChild(launch);root.appendChild(panel);document.body.appendChild(root);
+ for(const event of ['blur','pagehide'])window.addEventListener(event,stop);
+ document.addEventListener('visibilitychange',()=>{if(document.hidden)stop()});
+ window.addEventListener('keydown',e=>{if(e.code==='Escape'&&!panel.hidden){panel.hidden=true;document.body.classList.remove('nigin-tap-mode');launch.setAttribute('aria-expanded','false');stop();launch.focus()}});
+ return {stop,getState:()=>({open:!panel.hidden,move:m,look:l}),getButtons:()=>buttons.length,getPose:()=>adapter.pose()};
+}
+
+const tapControls=installTapControls({keys:S.keys,setLook:(x,y)=>{S.lookJoy=[x,y]},active:()=>S.started&&!document.hidden,action:()=>inspectNearest(),zoom:(d)=>{S.zoom=clamp(S.zoom*Math.exp(d*.18),S.mode==='drone'?75:6,S.mode==='drone'?740:23)},pose:()=>({player:[...S.p],camera:S.mode==='ego'?S.heading:S.orbit,zoom:S.zoom})});
+if (window.__NIGIN_QA_MODE__==='LOCAL_TEST_ONLY') window.__NIGIN_TAP__=tapControls;
+c.addEventListener('webglcontextlost',()=>tapControls.stop());
+})();
+</script></body></html>
