@@ -1,14 +1,14 @@
 <h1 align="center">NIGIN · Hauswelt</h1>
 
-<p align="center"><b><a href="https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_8.html">▶ Im Browser spielen</a></b> &nbsp;·&nbsp; <b><a href="https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip">⬇ Paket (ZIP) herunterladen</a></b> &nbsp;·&nbsp; Version 1.16.8</p>
+<p align="center"><b><a href="https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_9.html">▶ Im Browser spielen</a></b> &nbsp;·&nbsp; <b><a href="https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.9/NIGIN_Hauswelt_v1_16_9.zip">⬇ Paket (ZIP) herunterladen</a></b> &nbsp;·&nbsp; Version 1.16.9</p>
 <p align="center"><sub>Zwei Dateien · läuft offline · ohne Konto · die Welt sendet keine Daten</sub></p>
 
 | Datei | Inhalt | Spielen | Download |
 |---|---|---|---|
-| **Hauswelt** | das Atelierhaus mit Gartenterrasse | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_8.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/Nigin_Haus_v1_16_8.html) |
-| **Aarewelt** | die Skizzenwelt am Fluss, direkt aus dem Haus erreichbar | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Aare_v1_16_8.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/Nigin_Aare_v1_16_8.html) |
+| **Hauswelt** | das Atelierhaus mit Gartenterrasse | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Haus_v1_16_9.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.9/Nigin_Haus_v1_16_9.html) |
+| **Aarewelt** | die Skizzenwelt am Fluss, direkt aus dem Haus erreichbar | [▶ spielen](https://marcohost33-maker.github.io/nigin-hauswelt/Nigin_Aare_v1_16_9.html) | [⬇ HTML](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.9/Nigin_Aare_v1_16_9.html) |
 
-Für offline: das **[Paket NIGIN_Hauswelt_v1_16_8.zip](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.8/NIGIN_Hauswelt_v1_16_8.zip)** laden und entpacken. Beide Dateien müssen im selben Ordner liegen, damit der Weg zwischen den Welten funktioniert. Auf Android öffnet Chrome heruntergeladene Dateien so, dass dieser Weg nicht zuverlässig klappt: dort jede Welt einzeln öffnen oder über *Im Browser spielen* spielen.
+Für offline: das **[Paket NIGIN_Hauswelt_v1_16_9.zip](https://github.com/marcohost33-maker/nigin-hauswelt/releases/download/v1.16.9/NIGIN_Hauswelt_v1_16_9.zip)** laden und entpacken. Beide Dateien müssen im selben Ordner liegen, damit der Weg zwischen den Welten funktioniert. Auf Android öffnet Chrome heruntergeladene Dateien so, dass dieser Weg nicht zuverlässig klappt: dort jede Welt einzeln öffnen oder über *Im Browser spielen* spielen.
 
 Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Gartenterrasse, Tageszeit und abnehmbarem Dach. Von dort führt ein Weg in die **Aarewelt**, eine frei modellierte Skizzenwelt am Fluss mit Kraftwerk, Vogelinsel, Gärten, Uferweg und Fussbrücke. Beide Dateien gehören zusammen und verlinken einander. Deshalb liegen sie im Download als Paar vor.
 
@@ -22,12 +22,14 @@ Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Ga
 
 - **WASD** bewegen · **Maus** umsehen · **Shift** schneller
 - **E** interagieren · **1 / 2 / 3** Ansicht (Ego, Folgen, Haus)
-- **M** Karte · **Esc** Maus freigeben
+- **M** Karte · **F** oder **⛶** Vollbild · **Esc** Maus freigeben bzw. Dialog schliessen
+- Auf dem Handy: Steuerung per Antippen; Spielstand sichern über **?** (ganz oben im Dialog)
 
 ## Was es ist und was (noch) nicht
 
 - Die Aarewelt ist an Aarau angelehnt, aber frei modelliert und nicht vermessungstreu; es sind keine Geodaten eingebaut. Eigene Geodaten lassen sich lokal importieren und bleiben nur im Arbeitsspeicher.
 - Grundlage für ein späteres, grösseres Simulationsspiel; braucht einen Browser mit WebGL.
+- Die Handy-Bedienung ist im Browser-Emulator geprüft, auf echten Android- und iOS-Geräten noch nicht systematisch.
 
 ## Datenschutz
 
@@ -41,9 +43,11 @@ Das **Atelierhaus** ist Nigins erster Ort: ein ruhiger Raum zum Erkunden, mit Ga
 Die Dateien in diesem Repository und im Release sind byte-gleich. SHA-256 (auch in `SHA256SUMS.txt`):
 
 ```
-88adf7c10a70dc909edfd665b716e3f6ff76d906ce9f412062286a5630752a9d  Nigin_Haus_v1_16_8.html
-260d23ab1ef7f8fe43167c4b76586d8df5202497e80c8ed42bc6e56ee5590467  Nigin_Aare_v1_16_8.html
+9a292418961f40b27331d84cf7f53718701089c53eaa5a722b7bb9b92aa83206  Nigin_Haus_v1_16_9.html
+b20c8fab1645fcfa12dbbc453b67431d1ac687c47f03661e6177a658af08c6c7  Nigin_Aare_v1_16_9.html
 ```
+
+Was sich je Version geändert hat, steht in [CHANGELOG.md](CHANGELOG.md).
 
 ## Lizenz
 
